@@ -24,7 +24,7 @@ Kosten: Hauptsächlich der ElevenLabs-Plan. Frage in der Einrichtung, was ein Vi
 
 **GitHub**
 1. Konto anlegen.
-2. Vorlage `Blueprint-automation` als **privates** Repo kopieren (macht Claude dir in Schritt 4 vor).
+2. Vorlage `Blueprint-automation` als **privates** Repo kopieren (macht Claude in Schritt 4 für dich).
 3. In Claude den GitHub-Connector verbinden, so dass Claude dein Repo mit Schreibzugriff (push) einbinden kann. Meldet Claude "kein GitHub-Zugriff", dort in den Connector-Einstellungen neu verbinden.
 
 **ElevenLabs**
@@ -55,11 +55,11 @@ GitHub, ElevenLabs und Google Drive anlegen, falls du sie noch nicht hast.
 **2. Claude mit den Konten verbinden**
 In Claude unter Einstellungen die Verbindungen (Connectors) zu GitHub, ElevenLabs, Google Drive und Composio einschalten und jeweils anmelden. In Composio zusätzlich GitHub und Google Drive koppeln (Details im Abschnitt "Was du in jedem Tool einrichtest"). Wenn sich die Menüs anders nennen, frage Claude: "Wo verbinde ich GitHub?"
 
-**3. Claude-Projekt anlegen und Start-Anweisungen einfügen**
-In Claude ein neues Projekt anlegen (Name erst mal egal, du kannst es später umbenennen). Als Projektanweisungen fügst du den kompletten Inhalt von `vorlage/projektanweisungen_einrichtung.md` ein. Es muss nichts ersetzt werden. Dann schreibst du: **"Repo installieren"**. (Claude kann Projektanweisungen nicht selbst setzen, das ist der eine Handgriff am Anfang. Wenn du den Skill "repo-installieren" hast, gibt Claude dir den Text auf dieses Stichwort in einem Kopierblock aus.)
+**3. Link einfügen und "installiere" schreiben**
+Öffne einen neuen Claude-Chat, füge den Link der Vorlage ein (`https://github.com/eren91503/Blueprint-automation`) und schreibe **"installiere"**. Mehr musst du nicht tun. Claude liest die Vorlage (du brauchst dafür Zugriff: öffentlich oder du wurdest eingeladen) und führt dich dann Schritt für Schritt. Alternativ kannst du `vorlage/projektanweisungen_einrichtung.md` als Projektanweisungen einfügen und "Repo installieren" schreiben.
 
-**4. Idee, Name und Repo (Claude führt dich)**
-Claude fragt zuerst nach deiner Idee und deinem **Kanalnamen** (du hast schon einen, oder er schlägt dir welche vor und du bestätigst). Danach fragt er nach deinem GitHub-Namen und leitet daraus den Namen für dein Repo ab. Dann bekommst du **im Chat die Anleitung mit deinen echten Werten**: auf der Seite der Vorlage `Blueprint-automation` auf **"Use this template"**, **"Create a new repository"**, Owner = dein GitHub-Name, Name wie genannt, **Private**, **Create repository**. Wenn dort kein Knopf ist, muss der Besitzer der Vorlage sie freigeben (Template einschalten und dich einladen). Danach schreibst du **"Repo ist angelegt"**.
+**4. Idee, Name und dein eigenes Repo (Claude führt dich)**
+Claude fragt nach deiner Idee und deinem **Kanalnamen** (du hast schon einen, oder er schlägt dir welche vor und du bestätigst). Danach legt er in deinem GitHub-Konto selbst ein neues **privates** Repo für deinen Kanal an und kopiert die Vorlage hinein. Klappt das nicht, gibt er dir die Handschritte mit deinen echten Werten und wartet auf "Repo ist angelegt".
 
 **5. Drive-Ordner: entfällt**
 Den Ordner für deinen Kanal legt Claude selbst an, sobald der Name feststeht und die Verbindungen stehen (Schritt 2).
@@ -77,7 +77,7 @@ Claude schlägt Themen vor (du bestätigst). Dann fragt er dich, **wann du poste
 Claude zeigt dir alles auf einer Seite: Idee, Namen, Format, Stimme, Look, Testvideo, Kosten, Themen und Zeitplan. Du schreibst einmal **"Freigabe"**, oder sagst, was geändert werden soll. Mit der Freigabe ist der ganze restliche Ablauf freigegeben, Claude fragt dann nur noch, wenn etwas fehlt.
 
 **9. Automatik anlegen**
-Nach deiner Projektfreigabe legt Claude die Dateien für deinen Kanal an, richtet die geplanten Aufgaben ein und gibt dir die fertigen Betriebs-Projektanweisungen. Die ersetzen die Start-Anweisungen aus Schritt 3.
+Nach deiner Projektfreigabe legt Claude die Dateien für deinen Kanal an, richtet die geplanten Aufgaben ein und gibt dir die fertigen Betriebs-Projektanweisungen. Du legst dafür in Claude ein Projekt an (Name = Kanal) und fügst sie dort bei "Anweisungen" ein. Das ist der eine Handgriff, den Claude nicht für dich machen kann.
 
 **10. Ersten Lauf beobachten**
 Am nächsten Abend prüfen, ob das Video im Ordner `erstellt` liegt und du eine Nachricht bekommen hast. Danach: in der TikTok-App den Entwurf im Posteingang öffnen, Caption einfügen und posten.

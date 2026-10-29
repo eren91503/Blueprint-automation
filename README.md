@@ -4,6 +4,10 @@ Vorlage für automatisierte Kurzvideo-Kanäle (TikTok, Reels, Shorts). Einmal ge
 
 Abgeleitet aus dem Workflow des Kanals Faktum. Faktum selbst bleibt unverändert und liegt in einem eigenen Repo. Hier steht nur das Allgemeine, ohne Zugangsdaten und ohne Faktum-Inhalte.
 
+## Installieren
+
+Link dieses Repos in einen Claude-Chat einfügen und **"installiere"** schreiben. Claude bindet die Vorlage ein, klärt Idee und Namen, legt dein eigenes privates Repo an und führt durch die Einrichtung. Ablauf für Claude: `INSTALLIEREN.md`. Voraussetzung: Claude darf die Vorlage lesen (öffentlich oder du bist eingeladen).
+
 ## Wie es funktioniert
 
 1. **Einrichtung (einmalig, im Dialog):** Idee, Format, Stimme, Look, Themenliste, Zeitplan. Ein Testvideo wird gebaut und freigegeben. Siehe `EINRICHTUNG.md`.
@@ -14,6 +18,7 @@ Abgeleitet aus dem Workflow des Kanals Faktum. Faktum selbst bleibt unverändert
 
 | Pfad | Inhalt |
 |---|---|
+| `INSTALLIEREN.md` | Ablauf für Claude, wenn jemand den Link einfügt und "installiere" schreibt |
 | `BLUEPRINT.md` | Konzept: was konstant ist, was variabel |
 | `EINRICHTUNG.md` | Fragenablauf für die Einrichtung mit Claude |
 | `GO.md` | Betriebsanleitung für die Automatik (gilt für alle Kanäle) |
