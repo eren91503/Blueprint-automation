@@ -1,28 +1,31 @@
 # Einrichtung: Dialog mit Claude
 
-Diese Datei führt Claude durch die Einrichtung eines neuen Kanals. Ziel: Am Ende liegt `projekte/<kanal>/` mit `projekt.json`, `queue.json`, `schedule.json` und Caption-Regeln im Repo, und der Nutzer hat ein Testvideo freigegeben.
+Diese Datei führt Claude durch die Einrichtung eines neuen Kanals. Ziel: Am Ende liegt `projekte/<kanal>/` mit `projekt.json`, `queue.json`, `schedule.json` und Caption-Regeln im Repo, und der Nutzer hat das Testvideo bestätigt und das ganze Projekt freigegeben.
 
 Regeln für Claude:
 - Immer nur eine Frage auf einmal, kurz, auf Deutsch, ohne Fachwörter. Der Nutzer ist kein Programmierer.
-- Nichts anlegen, bis der Nutzer in Schritt 7 "Freigabe" sagt.
+- Nichts anlegen, bis der Nutzer in Schritt 10 die **Projektfreigabe** gibt (Wort: "Freigabe").
 - Keine Credits für Proben ausgeben, ohne vorher zu sagen, was es kostet (ungefähr).
 - Bestehende Kanäle (z. B. Faktum) nie verändern.
 
 ## Ablauf
 
-**1. Ziel und Zielgruppe**
-Worum geht es im Kanal, wer soll zuschauen, was soll hängen bleiben? Plattform und Kanalname festhalten.
+**1. Idee, Ziel und Zielgruppe**
+Worum geht es im Kanal, wer soll zuschauen, was soll hängen bleiben? Plattform festhalten. Hat die Person noch keine klare Idee, schlägt Claude 3 bis 5 Richtungen vor und fragt, was davon passt. Erst wenn die Idee in ein bis zwei Sätzen steht und die Person sie bestätigt, geht es weiter.
 
-**2. Format**
+**2. Name des Kanals**
+Gibt es schon einen Namen (z. B. den TikTok-Namen)? Dann übernimmt Claude ihn unverändert. Wenn nicht, schlägt Claude auf Basis der Idee 6 bis 8 Namen vor (kurz, merkbar, gut aussprechbar, zur Zielgruppe passend, jeweils mit einem Halbsatz Begründung). Die Person wählt oder ändert. Claude weist darauf hin, dass er nicht prüfen kann, ob der Name auf der Plattform frei ist: Die Person schaut selbst in der App nach und meldet sich, falls er vergeben ist. **Der Name wird erst übernommen, wenn die Person ihn ausdrücklich bestätigt.** Festhalten: Kanalname (für `kanal.name`) und ein Kurzname in Kleinbuchstaben ohne Leerzeichen für den Ordner `projekte/<kanalkurz>/`.
+
+**3. Format**
 Länge pro Video, Videos pro Tag, Seitenverhältnis (Standard 9:16, 1080x1920, 30 fps), Sprache.
 
-**3. Konzept und Inhaltsquelle**
+**4. Konzept und Inhaltsquelle**
 Vorschläge zeigen (Fragevideo, Erklärvideo, Story, Quiz, Fakten, Ranking, Zahlen-Animation, Simulation). Der Nutzer wählt eins. Dann klären, woher die Inhalte kommen (eigene Recherche mit Quellen, Simulation, Stockmaterial, Text-Animation) und welches Modul aus `module/` passt. Gibt es noch keins, sagt Claude das offen und schlägt die nächstliegende Vorlage vor.
 
-**4. Skriptstruktur**
+**5. Skriptstruktur**
 Welche Blöcke hat jedes Video (z. B. Hook, Hauptteil, Ergebnis, Schluss)? Wie viele Wörter, wie viele Zeilen pro Block? Drei Beispielskripte schreiben, der Nutzer wählt und korrigiert.
 
-**5. Stimme**
+**6. Stimme**
 Anbieter und Stimme. **Die Person sucht die Stimme selbst aus und nennt den Stimmcode.** Ablauf:
 1. Claude fragt: "Such dir in ElevenLabs unter Voices (Voice Library) eine Stimme aus, die zu deinem Kanal passt, und schick mir ihre Voice-ID." Er erklärt kurz, wo man sie findet: bei der Stimme auf "ID" bzw. "Copy Voice ID" klicken (eine lange Zeichenfolge aus Buchstaben und Zahlen). Stimmen aus der Library müssen vorher mit "Add to my voices" in die eigene Sammlung.
 2. Die Person schreibt die ID in den Chat. Claude übernimmt sie unverändert, nie aus dem Gedächtnis und nie eine eigene Auswahl.
@@ -31,21 +34,31 @@ Anbieter und Stimme. **Die Person sucht die Stimme selbst aus und nennt den Stim
 5. Festhalten in `projekt.json` unter `stimme`: `voice_id`, Modell, Sprache, Ton (ruhig, frech, sachlich). Weiter geht es erst mit der bestätigten Stimme.
 Möchte die Person keine eigene Stimme suchen, kann Claude auf Wunsch mit `creative_list_voices` Vorschläge machen, die ID bestätigt trotzdem die Person.
 
-**6. Look**
+**7. Look**
 Farben, Schrift, Layout, Untertitel, Intro und Outro. Möglichst mit einem Beispielbild klären, nicht nur mit Worten.
 
-**7. Testvideo und Freigabe**
-Ein Video aus einem der Beispielskripte bauen. Dabei Prüfung vor der Vertonung und Prüfbild nach dem Rendern wie in `GO.md`. Dem Nutzer zeigen. Korrekturen einarbeiten, bis er "Freigabe" schreibt.
+**8. Testvideo**
+Ein Video aus einem der Beispielskripte bauen. Dabei Prüfung vor der Vertonung und Prüfbild nach dem Rendern wie in `GO.md`. Dem Nutzer zeigen und die Credits pro Video nennen. Korrekturen einarbeiten, bis er sagt, dass das Testvideo passt ("Testvideo OK"). Das ist noch nicht die Projektfreigabe.
 
-**8. Themenliste und Zeitplan**
+**9. Themenliste und Zeitplan**
 Ersten Satz Themen vorschlagen (Anzahl nach `themenliste.nachschub`, mindestens 30 für den Start) und freigeben lassen. Dann den Zeitplan nach **`ZEITPLAN.md`** abfragen: Posting-Zeiten, bis wann die Videos fertig sein sollen, Bauzeit, Upload und Erinnerung, Pausen, Zeitzone. Daraus den Plan ableiten und als Tabelle zeigen. Der Nutzer entscheidet selbst, nichts davon wird vorgegeben.
 
-**9. Anlegen**
-Erst jetzt: `projekte/<kanal>/` aus `vorlage/` erzeugen und ausfüllen, Drive-Ordner `erstellt` und `gepostet` prüfen oder anlegen, geplante Aufgaben nach `ZEITPLAN.md` anlegen (Bau-Sitzungen, Upload, Erinnerung, Themen-Nachschub), erst nach dem OK des Nutzers zur Planungstabelle, Projektanweisungen aus `vorlage/projektanweisungen.md` für das Claude-Projekt des Kanals ausfüllen und ausgeben. Sie ersetzen die Einrichtungs-Fassung (`vorlage/projektanweisungen_einrichtung.md`).
+**10. Gesamtübersicht und Projektfreigabe**
+Claude fasst alles auf einer Seite zusammen, damit die Person das ganze Projekt auf einmal sieht und entscheidet:
+- Idee und Zielgruppe, **Kanalname** (bestätigt), Plattform
+- Format (Länge, Videos pro Tag), Konzept und Inhaltsmodul, Skriptstruktur
+- Stimme (Name und Voice-ID, bestätigt), Look (Farben, Schrift)
+- Testvideo (bestätigt) und Credits pro Video, daraus geschätzte Credits pro Monat im Vergleich zum Plan
+- Themenliste (Anzahl, erste fünf Themen) und der Zeitplan als Tabelle mit den Limits
+- Was Claude danach selbst tut (Dateien anlegen, geplante Aufgaben einrichten, Betriebs-Projektanweisungen ausgeben) und was bewusst offen bleibt (Posten von Hand)
+Dann fragt Claude genau einmal: "Soll ich das Projekt so anlegen? Schreibe **Freigabe**, oder sag, was geändert werden soll." Änderungen werden eingearbeitet und die Übersicht erneut gezeigt. **Mit der Freigabe ist der restliche Ablauf (Schritte 11 und 12) ohne weitere Rückfragen freigegeben.** Claude fragt dann nur noch, wenn etwas fehlt oder nicht geht.
 
-**10. Ersten Lauf beobachten**
+**11. Anlegen**
+Erst jetzt: `projekte/<kanal>/` aus `vorlage/` erzeugen und ausfüllen, Drive-Ordner `erstellt` und `gepostet` prüfen oder anlegen, geplante Aufgaben nach `ZEITPLAN.md` anlegen (Bau-Sitzungen, Upload, Erinnerung, Themen-Nachschub), gemäß der freigegebenen Planungstabelle, Projektanweisungen aus `vorlage/projektanweisungen.md` für das Claude-Projekt des Kanals ausfüllen und ausgeben. Sie ersetzen die Einrichtungs-Fassung (`vorlage/projektanweisungen_einrichtung.md`).
+
+**12. Ersten Lauf beobachten**
 Am nächsten Abend prüfen, ob das Video in `erstellt` liegt. Fehler und Lösungen in `LERNEN.md` eintragen.
 
 ## Was Claude beim Einrichten festhalten muss
 
-Alles aus den Schritten 1 bis 8 kommt in `projekt.json`. Fehlt ein Wert, wird nachgefragt, nicht geraten. Zugangsdaten (Passwörter, API-Schlüssel) kommen nie in eine Datei im Repo.
+Alles aus den Schritten 1 bis 9 kommt in `projekt.json`. Fehlt ein Wert, wird nachgefragt, nicht geraten. Zugangsdaten (Passwörter, API-Schlüssel) kommen nie in eine Datei im Repo.

@@ -7,8 +7,8 @@ Zum Ersetzen vor dem Einfügen: `<GitHub-Name>` und `<Repo-Name>` durch deine ei
 ## Wenn ich "Einrichtung starten" schreibe
 1. Repo `<GitHub-Name>/<Repo-Name>` einbinden (add_repo, Zugriff push) und klonen.
 2. `EINRICHTUNG.md`, `ZEITPLAN.md`, `BLUEPRINT.md` und `LERNEN.md` lesen und genau befolgen.
-3. Eine Frage auf einmal. Nichts anlegen, bevor ich "Freigabe" schreibe. Kosten (Credits) vor jeder Probe nennen.
-4. Nach meiner Freigabe: Ordner `projekte/<kanal>/` mit `projekt.json`, `queue.json`, `schedule.json` und Caption-Regeln anlegen, die geplanten Aufgaben nach `ZEITPLAN.md` erst nach meinem OK anlegen.
+3. Eine Frage auf einmal. Zuerst Idee, dann Name des Kanals (ich nenne einen oder du schlägst Namen vor, ich bestätige). Nichts anlegen, bevor ich nach der Gesamtübersicht "Freigabe" schreibe. Danach läuft der Rest ohne Rückfragen. Kosten (Credits) vor jeder Probe nennen.
+4. Nach meiner Projektfreigabe: Ordner `projekte/<kanal>/` mit `projekt.json`, `queue.json`, `schedule.json` und Caption-Regeln anlegen, die geplanten Aufgaben nach `ZEITPLAN.md` erst nach meinem OK anlegen.
 5. Am Ende die fertigen Betriebs-Projektanweisungen ausgeben (aus `vorlage/projektanweisungen.md`, mit meinen Werten ausgefüllt). Ich ersetze damit diese Einrichtungs-Fassung.
 
 ## Regeln

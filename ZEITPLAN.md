@@ -1,6 +1,6 @@
 # ZEITPLAN: Abfrage und Ableitung der Pläne
 
-Jeder entscheidet für seinen Kanal selbst, wann gepostet wird und wann neue Videos bereitliegen sollen. Claude fragt das in der Einrichtung ab (Schritt 8 in `EINRICHTUNG.md`), leitet daraus alle Pläne ab, zeigt sie als Tabelle und legt sie **erst nach dem OK des Nutzers** an.
+Jeder entscheidet für seinen Kanal selbst, wann gepostet wird und wann neue Videos bereitliegen sollen. Claude fragt das in der Einrichtung ab (Schritt 9 in `EINRICHTUNG.md`), leitet daraus alle Pläne ab und zeigt sie als Tabelle. Angelegt werden sie **erst nach der Projektfreigabe** (Schritt 10), in der die Tabelle Teil der Gesamtübersicht ist.
 
 ## Teil 1: Fragen (eine nach der anderen)
 
@@ -29,7 +29,7 @@ Claude vergleicht den gewünschten Plan mit diesen Grenzen und warnt, **bevor** 
 | TikTok, Anfragen | 6 Anfragen pro Minute je Zugang. Darüber kommt Fehler 429 (`rate_limit_exceeded`) | Zwei Uploads mindestens 5 Minuten auseinander, keine Wiederholungen in Schleifen |
 | TikTok, direktes Veröffentlichen | Typisch etwa 15 Posts pro Tag und Konto. Nicht geprüfte Apps dürfen nur privat posten | Wird im Blueprint nicht genutzt (`veroeffentlichen: false`). Nur wichtig, falls später direkt gepostet werden soll |
 | Composio und TikTok | Composio schreibt, dass man meist eine eigene TikTok-Developer-App mit eigenen Zugangsdaten braucht. Rechte: `video.upload`, `video.publish`, `video.list`. Im Sandbox-Modus oder während der Prüfung dürfen sich nur Tester anmelden. Nicht freigegebene Rechte lassen Werkzeuge ausfallen | Claude fragt (Frage 11). Ohne `video.list` funktioniert der Abgleich "schon gepostet" und die Themen-Tabelle nicht |
-| ElevenLabs | Credits pro Monat laut Plan. Tempo-Limit (429) | Claude misst die Credits pro Video im Testvideo (Schritt 7), rechnet Videos pro Monat mal Credits pro Video und warnt bei Überschreitung. Ein Aufruf zugleich (siehe `LERNEN.md`) |
+| ElevenLabs | Credits pro Monat laut Plan. Tempo-Limit (429) | Claude misst die Credits pro Video im Testvideo (Schritt 8), rechnet Videos pro Monat mal Credits pro Video und warnt bei Überschreitung. Ein Aufruf zugleich (siehe `LERNEN.md`) |
 | Claude, geplante Aufgaben | Normalerweise frühestens stündlich. Jede Bau-Sitzung verbraucht Nutzung deines Claude-Plans | Claude zählt die Sitzungen pro Tag und nennt sie vor dem OK |
 
 Regeln daraus:

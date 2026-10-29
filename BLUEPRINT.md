@@ -46,5 +46,5 @@ Dahinter liegt pro Formatart ein Modul in `module/` (Schnittstelle siehe `module
 ## Was bewusst nicht automatisch läuft
 
 - **Posten:** Das Video wird über Composio als Entwurf in den TikTok-Posteingang gelegt. Caption einfügen und Posten übernimmt der Nutzer manuell aus der App. Automatisches Veröffentlichen ist bewusst ausgeschaltet.
-- **Freigabe der Einrichtung:** Ohne Freigabe des Testvideos wird keine Automatik angelegt.
+- **Freigabe der Einrichtung:** Erst Name bestätigen, Stimme bestätigen, Testvideo bestätigen, dann eine Gesamtübersicht und die **Projektfreigabe**. Ohne sie wird nichts angelegt, danach läuft der Rest ohne weitere Rückfragen.
 - **Endgültiges Löschen:** Es gibt keins. Dateien wandern in den Drive-Papierkorb.

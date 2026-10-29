@@ -65,16 +65,19 @@ In Google Drive einen Ordner für deinen Kanal anlegen, darin zwei Unterordner: 
 In Claude ein neues Projekt anlegen, Name = dein Kanal. Als Projektanweisungen den Inhalt von `vorlage/projektanweisungen_einrichtung.md` einfügen. Du ersetzt darin nur `<GitHub-Name>` und `<Repo-Name>` durch deine eigenen Werte. Dann schreibst du: **"Einrichtung starten"**.
 
 **6. Dialog mit Claude**
-Claude fragt dich eins nach dem anderen: Idee, Plattform, Länge, Stil, Stimme, Look. Bei der Stimme nennst du ihm die Voice-ID aus ElevenLabs, er spielt eine Hörprobe vor und zeigt Beispielskripte. Antworte einfach in normalen Sätzen. Wenn du etwas nicht weißt, sag "schlag vor".
+Claude fragt dich eins nach dem anderen: Idee, **Name des Kanals** (du hast schon einen, oder Claude schlägt dir welche vor und du bestätigst), Plattform, Länge, Stil, Stimme, Look. Bei der Stimme nennst du ihm die Voice-ID aus ElevenLabs, er spielt eine Hörprobe vor und zeigt Beispielskripte. Antworte einfach in normalen Sätzen. Wenn du etwas nicht weißt, sag "schlag vor".
 
 **7. Testvideo prüfen und freigeben**
-Claude baut ein Testvideo. Schau es dir an und sag, was geändert werden soll. Wenn es passt, schreibe **"Freigabe"**. Vorher wird nichts automatisch angelegt.
+Claude baut ein Testvideo. Schau es dir an und sag, was geändert werden soll. Wenn es passt, schreibe **"Testvideo OK"**. Noch wird nichts angelegt.
 
 **8. Themenliste und Zeitplan**
-Claude schlägt Themen vor (du bestätigst). Dann fragt er dich, **wann du posten willst**, **bis wann die Videos fertig sein sollen** (z. B. am Vorabend), wann er bauen darf, wie früh vor dem Slot das Video im TikTok-Posteingang liegen soll und wann du erinnert werden willst. Daraus macht er einen Plan als Tabelle. Du sagst Ja oder änderst etwas. Erst dann legt er die geplanten Aufgaben an. Alles Weitere steht in `ZEITPLAN.md`.
+Claude schlägt Themen vor (du bestätigst). Dann fragt er dich, **wann du posten willst**, **bis wann die Videos fertig sein sollen** (z. B. am Vorabend), wann er bauen darf, wie früh vor dem Slot das Video im TikTok-Posteingang liegen soll und wann du erinnert werden willst. Daraus macht er einen Plan als Tabelle. Alles Weitere steht in `ZEITPLAN.md`.
+
+**8b. Gesamtübersicht und Projektfreigabe**
+Claude zeigt dir alles auf einer Seite: Idee, Namen, Format, Stimme, Look, Testvideo, Kosten, Themen und Zeitplan. Du schreibst einmal **"Freigabe"**, oder sagst, was geändert werden soll. Mit der Freigabe ist der ganze restliche Ablauf freigegeben, Claude fragt dann nur noch, wenn etwas fehlt.
 
 **9. Automatik anlegen**
-Nach deiner Freigabe legt Claude die Dateien für deinen Kanal an, richtet die geplanten Aufgaben ein und gibt dir die fertigen Betriebs-Projektanweisungen. Die ersetzen die Anweisungen aus Schritt 5.
+Nach deiner Projektfreigabe legt Claude die Dateien für deinen Kanal an, richtet die geplanten Aufgaben ein und gibt dir die fertigen Betriebs-Projektanweisungen. Die ersetzen die Anweisungen aus Schritt 5.
 
 **10. Ersten Lauf beobachten**
 Am nächsten Abend prüfen, ob das Video im Ordner `erstellt` liegt und du eine Nachricht bekommen hast. Danach: in der TikTok-App den Entwurf im Posteingang öffnen, Caption einfügen und posten.
@@ -85,5 +88,5 @@ Die Sitzung stoppt von selbst und schickt dir eine Nachricht mit dem Problem. Du
 ## Häufige Fragen
 - **Ich habe kein "Use this template".** Der Besitzer muss im Repo unter Settings die Option "Template repository" einschalten.
 - **Posten die Videos automatisch?** Nein, bewusst nicht. Das Video kommt als Entwurf in den Posteingang, Caption und Posten machst du selbst. Das schützt dein Konto.
-- **Wie viele Videos pro Tag?** Das legst du in Schritt 2 des Dialogs fest.
+- **Wie viele Videos pro Tag?** Das legst du im Dialog bei "Format" fest.
 - **Wie ändere ich später etwas?** Schreibe in deinem Claude-Projekt, was sich ändern soll. Claude passt `projekt.json` an.
