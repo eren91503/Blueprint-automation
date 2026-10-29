@@ -23,7 +23,13 @@ Vorschläge zeigen (Fragevideo, Erklärvideo, Story, Quiz, Fakten, Ranking, Zahl
 Welche Blöcke hat jedes Video (z. B. Hook, Hauptteil, Ergebnis, Schluss)? Wie viele Wörter, wie viele Zeilen pro Block? Drei Beispielskripte schreiben, der Nutzer wählt und korrigiert.
 
 **5. Stimme**
-Anbieter und Stimme. Bei ElevenLabs: mit `creative_list_voices` passende Stimmen vorschlagen, kurze Hörproben erzeugen (vorher Kosten nennen). Die Stimme-ID, das Modell und die Sprache festhalten. Ton (ruhig, frech, sachlich).
+Anbieter und Stimme. **Die Person sucht die Stimme selbst aus und nennt den Stimmcode.** Ablauf:
+1. Claude fragt: "Such dir in ElevenLabs unter Voices (Voice Library) eine Stimme aus, die zu deinem Kanal passt, und schick mir ihre Voice-ID." Er erklärt kurz, wo man sie findet: bei der Stimme auf "ID" bzw. "Copy Voice ID" klicken (eine lange Zeichenfolge aus Buchstaben und Zahlen). Stimmen aus der Library müssen vorher mit "Add to my voices" in die eigene Sammlung.
+2. Die Person schreibt die ID in den Chat. Claude übernimmt sie unverändert, nie aus dem Gedächtnis und nie eine eigene Auswahl.
+3. Claude prüft die ID mit `creative_list_voices`. Ist sie dort nicht zu finden, sagt er, was fehlt (meist "Add to my voices"), und fragt noch einmal. Nichts wird fortgesetzt, bevor die ID gefunden wurde.
+4. Danach eine kurze Hörprobe (vorher Kosten nennen, ein Satz reicht). Klingt die Stimme nicht passend, fragt Claude nach einer neuen ID.
+5. Festhalten in `projekt.json` unter `stimme`: `voice_id`, Modell, Sprache, Ton (ruhig, frech, sachlich). Weiter geht es erst mit der bestätigten Stimme.
+Möchte die Person keine eigene Stimme suchen, kann Claude auf Wunsch mit `creative_list_voices` Vorschläge machen, die ID bestätigt trotzdem die Person.
 
 **6. Look**
 Farben, Schrift, Layout, Untertitel, Intro und Outro. Möglichst mit einem Beispielbild klären, nicht nur mit Worten.

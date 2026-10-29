@@ -30,7 +30,7 @@ Kosten: Hauptsächlich der ElevenLabs-Plan. Frage in der Einrichtung, was ein Vi
 **ElevenLabs**
 1. Konto anlegen, Bezahlplan wählen.
 2. In Claude den ElevenLabs-Connector verbinden. Er muss Sprache erzeugen können.
-3. Die Stimme wählst du nicht vorher, sondern im Einrichtungsdialog (Hörproben).
+3. Such dir in ElevenLabs unter **Voices** eine Stimme aus (bei Stimmen aus der Library erst "Add to my voices"). Kopiere ihre **Voice-ID** ("Copy Voice ID"). Claude fragt im Einrichtungsdialog danach, prüft die ID, spielt eine kurze Hörprobe, und erst dann geht es weiter.
 
 **Google Drive**
 1. Online-Ordner anlegen: `<Kanal>/erstellt` und `<Kanal>/gepostet`.
@@ -65,7 +65,7 @@ In Google Drive einen Ordner für deinen Kanal anlegen, darin zwei Unterordner: 
 In Claude ein neues Projekt anlegen, Name = dein Kanal. Als Projektanweisungen den Inhalt von `vorlage/projektanweisungen_einrichtung.md` einfügen. Du ersetzt darin nur `<GitHub-Name>` und `<Repo-Name>` durch deine eigenen Werte. Dann schreibst du: **"Einrichtung starten"**.
 
 **6. Dialog mit Claude**
-Claude fragt dich eins nach dem anderen: Idee, Plattform, Länge, Stil, Stimme, Look. Er spielt Stimmproben vor und zeigt Beispielskripte. Antworte einfach in normalen Sätzen. Wenn du etwas nicht weißt, sag "schlag vor".
+Claude fragt dich eins nach dem anderen: Idee, Plattform, Länge, Stil, Stimme, Look. Bei der Stimme nennst du ihm die Voice-ID aus ElevenLabs, er spielt eine Hörprobe vor und zeigt Beispielskripte. Antworte einfach in normalen Sätzen. Wenn du etwas nicht weißt, sag "schlag vor".
 
 **7. Testvideo prüfen und freigeben**
 Claude baut ein Testvideo. Schau es dir an und sag, was geändert werden soll. Wenn es passt, schreibe **"Freigabe"**. Vorher wird nichts automatisch angelegt.
