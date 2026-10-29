@@ -70,3 +70,4 @@ Zwei Tage vor Ende der Liste schlägt eine geplante Aufgabe so viele neue Themen
 - Jedes Video läuft in einer eigenen Sitzung.
 - Die Sitzungen starten zeitlich versetzt (`zeitplan.sitzungen`), damit sich die Vertonungen nicht überlappen. Ist die vorige Sitzung noch beim Vertonen, wartet die nächste, höchstens 30 Minuten.
 - Posten und TikTok-Upload laufen nach den Einstellungen in `projekt.json` unter `posten`. Der Nutzer postet manuell aus der App.
+- Vor jedem Upload die Limits aus `projekt.json` unter `limits` beachten (`tiktok_uploads_pro_24h`, `tiktok_upload_abstand_minuten`). Bei Fehler 403 wegen zu vieler wartender Uploads nicht wiederholen, den Nutzer benachrichtigen (siehe `LERNEN.md`, Abschnitt TikTok-Upload).

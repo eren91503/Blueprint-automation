@@ -14,7 +14,28 @@ Jeder entscheidet für seinen Kanal selbst, wann gepostet wird und wann neue Vid
 8. **Zeitzone?** Standard `Europe/Berlin`.
 9. **Themenvorrat:** Wie viele Themen liegen bereit, und wie viele Tage vor Listenende sollen neue vorgeschlagen werden? Vorschlag: 2 Tage, jeweils 17 neue (an die Wochenmenge anpassen).
 
+10. **Welchen ElevenLabs-Plan hast du?** Wie viele Credits pro Monat? Claude rechnet später damit.
+11. **TikTok über Composio:** Gibt es eine eigene TikTok-Developer-App mit freigegebenen Rechten (`video.upload`, `video.list`)? Wurde schon einmal etwas in den Posteingang hochgeladen? Antwort "weiß ich nicht" wird als offener Punkt vermerkt, nicht geraten.
+
 Fehlt eine Antwort, wird nachgefragt oder der Standard genommen und genannt, nie stillschweigend geraten.
+
+## Teil 1b: Limits, die Claude vor dem Plan prüft
+
+Claude vergleicht den gewünschten Plan mit diesen Grenzen und warnt, **bevor** etwas angelegt wird. Die TikTok-Werte stammen aus der Dokumentation von TikTok for Developers und der Composio-Dokumentation (Stand 29.10.2026). Grenzen ändern sich: Claude prüft sie bei der Einrichtung noch einmal und trägt abweichende Werte in `projekt.json` unter `limits` ein.
+
+| Bereich | Grenze | Folge für den Plan |
+|---|---|---|
+| TikTok, Upload in den Posteingang | Höchstens 5 wartende Uploads innerhalb von 24 Stunden je Konto. Darüber kommt Fehler 403 (`spam_risk_too_many_pending_share`) | Mehr als 5 Videos pro Tag sind über den Posteingang nicht planbar. Claude warnt schon ab 4 pro Tag, weil Entwürfe, die noch nicht gepostet oder gelöscht sind, vermutlich mitzählen (Auslegung, nicht bestätigt) |
+| TikTok, Anfragen | 6 Anfragen pro Minute je Zugang. Darüber kommt Fehler 429 (`rate_limit_exceeded`) | Zwei Uploads mindestens 5 Minuten auseinander, keine Wiederholungen in Schleifen |
+| TikTok, direktes Veröffentlichen | Typisch etwa 15 Posts pro Tag und Konto. Nicht geprüfte Apps dürfen nur privat posten | Wird im Blueprint nicht genutzt (`veroeffentlichen: false`). Nur wichtig, falls später direkt gepostet werden soll |
+| Composio und TikTok | Composio schreibt, dass man meist eine eigene TikTok-Developer-App mit eigenen Zugangsdaten braucht. Rechte: `video.upload`, `video.publish`, `video.list`. Im Sandbox-Modus oder während der Prüfung dürfen sich nur Tester anmelden. Nicht freigegebene Rechte lassen Werkzeuge ausfallen | Claude fragt (Frage 11). Ohne `video.list` funktioniert der Abgleich "schon gepostet" und die Themen-Tabelle nicht |
+| ElevenLabs | Credits pro Monat laut Plan. Tempo-Limit (429) | Claude misst die Credits pro Video im Testvideo (Schritt 7), rechnet Videos pro Monat mal Credits pro Video und warnt bei Überschreitung. Ein Aufruf zugleich (siehe `LERNEN.md`) |
+| Claude, geplante Aufgaben | Normalerweise frühestens stündlich. Jede Bau-Sitzung verbraucht Nutzung deines Claude-Plans | Claude zählt die Sitzungen pro Tag und nennt sie vor dem OK |
+
+Regeln daraus:
+- `limits.max_videos_pro_tag` (Standard 5) ist die Obergrenze. Wünscht der Nutzer mehr, sagt Claude, was dagegen spricht, und bietet Alternativen an (weniger Videos, ein zweites TikTok-Konto mit eigener Verbindung, direktes Veröffentlichen nach TikTok-Prüfung).
+- Der Upload soll **spät** vor dem Slot laufen (siehe Frage 5), damit möglichst wenige Entwürfe gleichzeitig warten.
+- Ein Upload-Fehler 403 wegen zu vieler wartender Uploads wird **nicht wiederholt**. Die Sitzung benachrichtigt den Nutzer, dass er wartende Entwürfe posten oder löschen soll (siehe `LERNEN.md`).
 
 ## Teil 2: Ableitung (Regeln für Claude)
 
@@ -49,6 +70,7 @@ Claude rechnet nach und meldet Auffälliges:
 - Wie viele Sitzungen pro Tag entstehen, und was kosten sie ungefähr (Credits, Aufrufe)? Vor dem OK nennen.
 - Liegen Slots so eng, dass zwei Uploads zugleich fällig sind?
 - Gibt es Tage ohne Slot, an denen keine Bau-Sitzung laufen soll?
+- Hält der Plan alle Limits aus Teil 1b ein (Uploads pro 24 Stunden, Abstand der Uploads, Credits pro Monat)? Überschreitungen mit Zahlen nennen.
 
 ## Teil 3: Beispiel
 

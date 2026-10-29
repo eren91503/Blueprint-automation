@@ -77,6 +77,21 @@ Ausschreiben (sonst liest die Stimme sie falsch). Im Feld `check` steht die Vari
 
 ---
 
+## TikTok-Upload (über Composio)
+
+Diese Einträge stammen aus der TikTok-Dokumentation, nicht aus eigenen Läufen. Sie sind noch nicht in der Praxis bestätigt.
+
+**Fehler 403 `spam_risk_too_many_pending_share`**
+Es warten zu viele Uploads im Posteingang (Grenze: 5 innerhalb von 24 Stunden je Konto). Nicht wiederholen. Nutzer benachrichtigen, dass er wartende Entwürfe posten oder löschen soll, und den Upload erst danach neu starten. Den Upload-Zeitpunkt näher an den Slot legen.
+
+**Fehler 429 `rate_limit_exceeded`**
+Zu viele Anfragen (Grenze: 6 pro Minute je Zugang). 60 Sekunden warten, einmal erneut versuchen, nicht in einer Schleife.
+
+**Anmeldung bei Composio schlägt fehl oder Werkzeuge fehlen**
+Mögliche Ursachen laut Composio: keine eigene TikTok-Developer-App, App im Sandbox-Modus (nur Tester dürfen sich anmelden), oder Rechte angefordert, die nicht freigegeben sind. Eine ausdrückliche Rechteliste mit nur den freigegebenen Rechten setzen und neu verbinden. Ohne `video.list` fehlt die Abfrage, ob schon gepostet wurde.
+
+---
+
 ## Git
 
 **`git push -f` auf einen Branch wird vom Sicherheitsfilter blockiert**

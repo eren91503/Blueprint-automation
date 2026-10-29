@@ -73,6 +73,10 @@
   "limits": {
     "credits_pro_video": null,
     "credits_pro_tag": null,
+    "credits_pro_monat": null,
+    "max_videos_pro_tag": 5,
+    "tiktok_uploads_pro_24h": 5,
+    "tiktok_upload_abstand_minuten": 5,
     "websuchen": 2,
     "wiederholungen_stimme": 3,
     "wiederholungen_render_upload": 2
