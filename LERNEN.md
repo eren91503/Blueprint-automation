@@ -127,3 +127,9 @@ Nach jeder Abgabe die Tabelle synchronisieren (Stati: offen, erstellt, im Postfa
 **<Kurztitel des Fehlers>**
 <Ursache in einem Satz.> <Lösung in ein bis zwei Sätzen.> (Datum, Kanal, bestätigt oder Beobachtung)
 ```
+
+## Livetest 29.10.2026 (Blueprint)
+- Ablauf geprüft: Block mit Pausen-Tag vertonen (7,9 s, 138 Credits für 159 Zeichen), `audio_to_repo` in einen Testzweig, Zeilenschnitt (4,0 s und 3,3 s), Rendern, `video_to_drive` mit Ordnerprüfung (`in_ordner: true`, Größe stimmt).
+- Die Composio-Umgebung lädt die Signaturlinks von ElevenLabs ohne 403. Der Link ist nur kurz gültig (hier 2 Stunden), also sofort nach dem Vertonen holen.
+- `GOOGLEDRIVE_CREATE_FOLDER` verlangt das Feld `name`.
+- Die Stimme wird per Voice-ID von der Person genannt und mit `creative_list_voices` (Suchfeld = ID) bestätigt.

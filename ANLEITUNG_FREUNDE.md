@@ -40,7 +40,7 @@ Kosten: Hauptsächlich der ElevenLabs-Plan. Frage in der Einrichtung, was ein Vi
 **Composio**
 1. Konto anlegen und den Composio-Connector in Claude verbinden.
 2. In Composio drei Apps koppeln: **GitHub**, **Google Drive** und **TikTok** (dein eigenes Konto jeweils). Über die TikTok-Verbindung wird das Video in den Posteingang geladen.
-3. Die Hilfsdatei `tools/bridge.py` liegt in deinem Repo, und Claude lädt sie von dort in die Composio-Umgebung. Du legst nichts selbst ab. Repo-Name und Drive-Ordner übergibt Claude bei jedem Aufruf aus `projekt.json`. Die Datei ist mit künstlichen Aufrufen geprüft (`tools/test_bridge_mock.py`), aber noch nicht live in Composio. Dieser Test steht aus.
+3. Die Hilfsdatei `tools/bridge.py` liegt in deinem Repo, und Claude lädt sie von dort in die Composio-Umgebung. Du legst nichts selbst ab. Repo-Name und Drive-Ordner übergibt Claude bei jedem Aufruf aus `projekt.json`. Die Datei wurde am 29.10.2026 live geprüft (Audio von ElevenLabs ins Repo, Video aus dem Repo nach Drive, Ordner kontrolliert).
 
 **TikTok-Posteingang**
 Bei Faktum übernimmt das Skript `run_faktum.py` (im Drive, läuft in der Composio-Umgebung) diesen Teil: Es legt das Video einige Zeit vor dem Slot als Entwurf in den TikTok-Posteingang (ohne zu veröffentlichen) und schickt dir kurz vor dem Slot eine Erinnerung mit Caption und Hashtags. Du fügst die Caption ein und postest. Außerdem pflegt es eine Themen-Tabelle mit Status und Kennzahlen. Dafür laufen zwei geplante Aufgaben: Upload und Erinnerung.
