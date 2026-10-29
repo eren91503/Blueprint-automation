@@ -35,7 +35,7 @@ Ein Video aus einem der Beispielskripte bauen. Dabei Prüfung vor der Vertonung 
 Ersten Satz Themen vorschlagen (Anzahl nach `themenliste.nachschub`, mindestens 30 für den Start) und freigeben lassen. Dann den Zeitplan nach **`ZEITPLAN.md`** abfragen: Posting-Zeiten, bis wann die Videos fertig sein sollen, Bauzeit, Upload und Erinnerung, Pausen, Zeitzone. Daraus den Plan ableiten und als Tabelle zeigen. Der Nutzer entscheidet selbst, nichts davon wird vorgegeben.
 
 **9. Anlegen**
-Erst jetzt: `projekte/<kanal>/` aus `vorlage/` erzeugen und ausfüllen, Drive-Ordner `erstellt` und `gepostet` prüfen oder anlegen, geplante Aufgaben nach `ZEITPLAN.md` anlegen (Bau-Sitzungen, Upload, Erinnerung, Themen-Nachschub), erst nach dem OK des Nutzers zur Planungstabelle, Projektanweisungen aus `vorlage/projektanweisungen.md` für das Claude-Projekt des Kanals ausgeben.
+Erst jetzt: `projekte/<kanal>/` aus `vorlage/` erzeugen und ausfüllen, Drive-Ordner `erstellt` und `gepostet` prüfen oder anlegen, geplante Aufgaben nach `ZEITPLAN.md` anlegen (Bau-Sitzungen, Upload, Erinnerung, Themen-Nachschub), erst nach dem OK des Nutzers zur Planungstabelle, Projektanweisungen aus `vorlage/projektanweisungen.md` für das Claude-Projekt des Kanals ausfüllen und ausgeben. Sie ersetzen die Einrichtungs-Fassung (`vorlage/projektanweisungen_einrichtung.md`).
 
 **10. Ersten Lauf beobachten**
 Am nächsten Abend prüfen, ob das Video in `erstellt` liegt. Fehler und Lösungen in `LERNEN.md` eintragen.

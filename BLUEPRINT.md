@@ -41,7 +41,7 @@ Der schwierigste Teil ist der Inhalt eines Videos. Faktum nutzt eine Simulation.
 - **Eingabe:** Thema (Eintrag aus `queue.json`) und Skript
 - **Ausgabe:** Szenen mit Zeitmarken und Sprechtext, bereit zum Rendern
 
-Dahinter liegt pro Formatart ein Modul in `module/`. Geplant sind zunächst zwei bis drei Vorlagen (Text-und-Bild-Erklärvideo, Zahlen-Animation, Simulation). Weitere kommen, wenn ein Kanal sie braucht.
+Dahinter liegt pro Formatart ein Modul in `module/` (Schnittstelle siehe `module/README.md`). Vorhanden ist `erklaervideo_text_bild`. Geplant sind Zahlen-Animation und Simulation. Weitere kommen, wenn ein Kanal sie braucht.
 
 ## Was bewusst nicht automatisch läuft
 

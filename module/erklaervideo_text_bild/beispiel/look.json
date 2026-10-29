@@ -1,0 +1,17 @@
+{
+  "kanalname": "Beispielkanal",
+  "aufloesung": "1080x1920",
+  "fps": 30,
+  "pause": 0.15,
+  "schrift": null,
+  "karte_groesse": 78,
+  "farben": {
+    "hintergrund": "#F4EFE6",
+    "panel": "#FFFFFF",
+    "text": "#1D1D1F",
+    "akzent": "#2F6FED",
+    "untertitel_bg": "#1D1D1F",
+    "untertitel_text": "#FFFFFF"
+  },
+  "untertitel": { "position": "unten", "groesse": 54 }
+}

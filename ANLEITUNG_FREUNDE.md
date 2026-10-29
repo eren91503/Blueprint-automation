@@ -62,7 +62,7 @@ Auf der Seite des Repos `Blueprint-automation` auf **"Use this template"** klick
 In Google Drive einen Ordner für deinen Kanal anlegen, darin zwei Unterordner: `erstellt` und `gepostet`. Nutze den Ordner in "Meine Ablage" (online), nicht einen Ordner, der mit deinem Computer synchronisiert wird.
 
 **5. Claude-Projekt anlegen**
-In Claude ein neues Projekt anlegen, Name = dein Kanal. Als Projektanweisungen den Inhalt von `vorlage/projektanweisungen.md` einfügen (die spitzen Klammern füllt Claude in Schritt 9 für dich aus). Dann schreibst du: **"Einrichtung starten"**.
+In Claude ein neues Projekt anlegen, Name = dein Kanal. Als Projektanweisungen den Inhalt von `vorlage/projektanweisungen_einrichtung.md` einfügen. Du ersetzt darin nur `<GitHub-Name>` und `<Repo-Name>` durch deine eigenen Werte. Dann schreibst du: **"Einrichtung starten"**.
 
 **6. Dialog mit Claude**
 Claude fragt dich eins nach dem anderen: Idee, Plattform, Länge, Stil, Stimme, Look. Er spielt Stimmproben vor und zeigt Beispielskripte. Antworte einfach in normalen Sätzen. Wenn du etwas nicht weißt, sag "schlag vor".
@@ -74,7 +74,7 @@ Claude baut ein Testvideo. Schau es dir an und sag, was geändert werden soll. W
 Claude schlägt Themen vor (du bestätigst). Dann fragt er dich, **wann du posten willst**, **bis wann die Videos fertig sein sollen** (z. B. am Vorabend), wann er bauen darf, wie früh vor dem Slot das Video im TikTok-Posteingang liegen soll und wann du erinnert werden willst. Daraus macht er einen Plan als Tabelle. Du sagst Ja oder änderst etwas. Erst dann legt er die geplanten Aufgaben an. Alles Weitere steht in `ZEITPLAN.md`.
 
 **9. Automatik anlegen**
-Nach deiner Freigabe legt Claude die Dateien für deinen Kanal an, richtet die geplanten Aufgaben ein und gibt dir die fertigen Projektanweisungen.
+Nach deiner Freigabe legt Claude die Dateien für deinen Kanal an, richtet die geplanten Aufgaben ein und gibt dir die fertigen Betriebs-Projektanweisungen. Die ersetzen die Anweisungen aus Schritt 5.
 
 **10. Ersten Lauf beobachten**
 Am nächsten Abend prüfen, ob das Video im Ordner `erstellt` liegt und du eine Nachricht bekommen hast. Danach: in der TikTok-App den Entwurf im Posteingang öffnen, Caption einfügen und posten.
