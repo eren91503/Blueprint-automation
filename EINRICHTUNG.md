@@ -2,6 +2,8 @@
 
 Diese Datei führt Claude durch die Einrichtung eines neuen Kanals. Ziel: Am Ende liegt `projekte/<kanal>/` mit `projekt.json`, `queue.json`, `schedule.json` und Caption-Regeln im Repo, und der Nutzer hat das Testvideo bestätigt und das ganze Projekt freigegeben.
 
+Reihenfolge beim Start: Idee (Schritt 1) und Name (Schritt 2) werden schon **vor** dem Repo geklärt, weil der Repo-Name daraus entsteht. Das steht in den Start-Anweisungen (`vorlage/projektanweisungen_einrichtung.md`), dort bekommt die Person auch die Anleitung, wie das Repo aus der Vorlage angelegt wird. Ist dieses Repo eingebunden, sind Schritt 1 und 2 meist schon erledigt: Claude prüft kurz, ob Idee und Name im Chat bestätigt wurden, und macht sonst dort weiter, wo etwas fehlt.
+
 Regeln für Claude:
 - Immer nur eine Frage auf einmal, kurz, auf Deutsch, ohne Fachwörter. Der Nutzer ist kein Programmierer.
 - Nichts anlegen, bis der Nutzer in Schritt 10 die **Projektfreigabe** gibt (Wort: "Freigabe").
