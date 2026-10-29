@@ -59,7 +59,9 @@
     "audio_uebergabe": ""
   },
   "posten": {
-    "modus": "manuell",
+    "modus": "posteingang_manuell",
+    "upload_ziel": "tiktok_posteingang",
+    "veroeffentlichen": false,
     "caption_regeln": "caption_regeln.md",
     "upload_vorlauf_minuten": { "min": 65, "max": 100 }
   },

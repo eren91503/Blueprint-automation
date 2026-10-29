@@ -5,7 +5,7 @@ Entwurf. Die genauen Klickwege in den Einstellungen und die Schritte 6 bis 8 wer
 Du brauchst keine Programmierkenntnisse. Du bekommst deine eigene Kopie der Vorlage, mit deinen eigenen Konten. Nichts wird mit anderen geteilt.
 
 ## Was du am Ende hast
-Jeden Abend baut Claude automatisch die Videos für den nächsten Tag und legt sie in deinen Google-Drive-Ordner. Du lädst sie nur noch bei TikTok hoch und postest.
+Jeden Abend baut Claude automatisch die Videos für den nächsten Tag und legt sie in deinen Google-Drive-Ordner. Vor dem Slot liegt das Video als Entwurf in deinem TikTok-Posteingang. Du fügst nur noch die Caption ein und postest.
 
 ## Was du vorher brauchst
 
@@ -15,8 +15,8 @@ Jeden Abend baut Claude automatisch die Videos für den nächsten Tag und legt s
 | GitHub-Konto | Speichert Vorlage, Themenliste, Zeitplan, Fehlerwissen und das Audio auf dem Weg zur Sitzung | Kostenlos, privates Repo |
 | ElevenLabs-Konto | Die Stimme | Bezahlplan. Mit dem Gratisplan stößt du schnell an Grenzen. Bei Faktum verschwanden die Tempo-Fehler (429) nach dem Wechsel auf den Starter-Plan (Beobachtung) |
 | Google-Konto mit Drive | Ablage der fertigen Videos (`erstellt`, `gepostet`) | Ordner in "Meine Ablage", nicht in einem mit dem Computer synchronisierten Ordner |
-| Composio-Konto | Dateibrücke: holt das Audio von ElevenLabs ins Repo und lädt das fertige Video nach Drive | Die Sitzung selbst erreicht die ElevenLabs-Links nicht (403). Preis und Plan bei Composio selbst prüfen |
-| TikTok-Konto | Du postest selbst aus der App | Kein Zugang für die Automatik nötig |
+| Composio-Konto | Dateibrücke: holt das Audio von ElevenLabs ins Repo, lädt das fertige Video nach Drive und legt es in den TikTok-Posteingang | Die Sitzung selbst erreicht die ElevenLabs-Links nicht (403). Preis und Plan bei Composio selbst prüfen |
+| TikTok-Konto | Das Video landet über Composio als Entwurf in deinem TikTok-Posteingang. Caption einfügen und Posten machst du selbst in der App | In Composio die TikTok-App mit deinem Konto koppeln. Voraussetzungen und Freigaben von TikTok vorher prüfen |
 
 Kosten: Hauptsächlich der ElevenLabs-Plan. Frage in der Einrichtung, was ein Video ungefähr kostet, bevor du es freigibst.
 
@@ -39,10 +39,13 @@ Kosten: Hauptsächlich der ElevenLabs-Plan. Frage in der Einrichtung, was ein Vi
 
 **Composio**
 1. Konto anlegen und den Composio-Connector in Claude verbinden.
-2. In Composio zwei Apps koppeln: **GitHub** und **Google Drive** (dein eigenes Konto jeweils).
+2. In Composio drei Apps koppeln: **GitHub**, **Google Drive** und **TikTok** (dein eigenes Konto jeweils). Über die TikTok-Verbindung wird das Video in den Posteingang geladen.
 3. Die Hilfsdatei `bridge.py` in deinen Drive-Ordner legen. Sie enthält deinen Repo-Namen und die ID des Ordners `erstellt`. **Noch zu bauen:** Bei Faktum liegt eine solche Datei fest verdrahtet im Drive. Im Blueprint muss sie erst verallgemeinert und getestet werden, bevor Freunde sie nutzen können.
 
-**Noch offen im Blueprint:** Upload ins TikTok-Postfach und die Erinnerung mit Caption laufen bei Faktum über eigene geplante Aufgaben und ein Skript im Drive. Diese Teile sind noch nicht ins Blueprint übernommen.
+**TikTok-Posteingang**
+Bei Faktum übernimmt das Skript `run_faktum.py` (im Drive, läuft in der Composio-Umgebung) diesen Teil: Es legt das Video einige Zeit vor dem Slot als Entwurf in den TikTok-Posteingang (ohne zu veröffentlichen) und schickt dir kurz vor dem Slot eine Erinnerung mit Caption und Hashtags. Du fügst die Caption ein und postest. Außerdem pflegt es eine Themen-Tabelle mit Status und Kennzahlen. Dafür laufen zwei geplante Aufgaben: Upload und Erinnerung.
+
+**Noch offen im Blueprint:** `run_faktum.py` hat bei Faktum Repo-Name, Ordner-IDs und Dateipfade fest eingetragen. Für das Blueprint muss es verallgemeinert und mit einem Testkonto geprüft werden, bevor Freunde es nutzen können. Dasselbe gilt für `bridge.py`.
 
 ## Schritt für Schritt
 
@@ -74,13 +77,13 @@ Claude schlägt Themen vor (du bestätigst) und fragt, an welchen Tagen und Uhrz
 Nach deiner Freigabe legt Claude die Dateien für deinen Kanal an, richtet die geplanten Aufgaben ein und gibt dir die fertigen Projektanweisungen.
 
 **10. Ersten Lauf beobachten**
-Am nächsten Abend prüfen, ob das Video im Ordner `erstellt` liegt und du eine Nachricht bekommen hast. Danach: Video aufs Handy, bei TikTok hochladen, posten.
+Am nächsten Abend prüfen, ob das Video im Ordner `erstellt` liegt und du eine Nachricht bekommen hast. Danach: in der TikTok-App den Entwurf im Posteingang öffnen, Caption einfügen und posten.
 
 ## Wenn etwas schiefgeht
 Die Sitzung stoppt von selbst und schickt dir eine Nachricht mit dem Problem. Du musst nichts reparieren. Antworte Claude in dem Chat, dort wird es gelöst und für alle Kanäle in `LERNEN.md` festgehalten.
 
 ## Häufige Fragen
 - **Ich habe kein "Use this template".** Der Besitzer muss im Repo unter Settings die Option "Template repository" einschalten.
-- **Posten die Videos automatisch?** Nein, bewusst nicht. Du postest selbst. Das schützt dein Konto.
+- **Posten die Videos automatisch?** Nein, bewusst nicht. Das Video kommt als Entwurf in den Posteingang, Caption und Posten machst du selbst. Das schützt dein Konto.
 - **Wie viele Videos pro Tag?** Das legst du in Schritt 2 des Dialogs fest.
 - **Wie ändere ich später etwas?** Schreibe in deinem Claude-Projekt, was sich ändern soll. Claude passt `projekt.json` an.
