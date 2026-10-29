@@ -1,0 +1,8 @@
+[
+  { "id": "h1", "scene": "hook", "say": "Warum ist der Himmel eigentlich blau?", "sub": "Warum ist der Himmel blau?", "karte": "Warum ist der Himmel blau?" },
+  { "id": "s1", "scene": "setup", "say": "Sonnenlicht sieht weiß aus. Es besteht aber aus allen Farben des Regenbogens.", "sub": ["Sonnenlicht sieht weiß aus.", "Es besteht aus allen Farben."], "karte": "Weißes Licht = alle Farben" },
+  { "id": "m1", "scene": "haupt", "say": "Trifft das Licht auf die Luft, werden die Farben unterschiedlich stark gestreut.", "sub": "Luft streut die Farben unterschiedlich stark.", "karte": "Luft streut Licht" },
+  { "id": "m2", "scene": "haupt", "say": "Blaues Licht wird viel stärker gestreut als rotes Licht.", "sub": "Blau wird stärker gestreut als Rot.", "karte": "Blau wird stärker gestreut als Rot" },
+  { "id": "r1", "scene": "ergebnis", "say": "Darum kommt von überall am Himmel blaues Licht in unsere Augen.", "sub": ["Darum kommt blaues Licht", "von überall am Himmel."], "karte": "Blaues Licht kommt von überall" },
+  { "id": "e1", "scene": "schluss", "say": "Und warum sind Sonnenuntergänge rot? Das erkläre ich dir im nächsten Video.", "sub": ["Und warum sind Sonnenuntergänge rot?", "Das kommt im nächsten Video."], "karte": "Warum sind Sonnenuntergänge rot?" }
+]

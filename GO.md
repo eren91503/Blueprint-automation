@@ -32,28 +32,31 @@ Das Modul steht in `projekt.json` unter `inhaltsmodul`. Es liefert Szenen und Ze
 
 ## 3. Sprechtext
 Struktur, Blöcke, Wortzahl und Ziellänge stehen in `projekt.json` unter `skript`. Zahlen im Sprechtext ausschreiben. Nicht kürzen, um Credits zu sparen.
+Ablage: `projekte/<kanal>/videos/<id>/narration.json` (Felder siehe `module/<modul>/README.md`). Danach `python3 tools/bloecke.py projekte/<kanal>/videos/<id>/narration.json projekte/<kanal>/videos/<id>/blocks.json` ausführen. Es zeigt Blöcke, Wörter und Zeichen (Richtwert für die Credits) und warnt, wenn eine Zeile nicht mit . ? ! oder : endet.
 
 ## 4. Stimme
 Anbieter, Stimme, Modell und `generations_count` stehen in `projekt.json` unter `stimme`. Das Beispiel gilt für ElevenLabs:
 - Vorher `creative_create_flow`, dann **ein Aufruf pro Block** (nicht pro Zeile) mit der festen `flow_id`.
-- Zeilen eines Blocks mit `<break time="1.0s" />` verbinden.
+- Der Blocktext steht in `blocks.json` (Feld `text` je Szene), die Zeilen sind dort schon mit dem Pausen-Tag verbunden.
+- Die `voice_id` kommt aus `projekt.json`, nie aus dem Gedächtnis.
 - **Immer nur ein Aufruf zugleich.** Nach jedem Block den Status abfragen, erst dann den nächsten starten.
 - Fehler 429, Pausen-Tag, Signaturlinks: siehe `LERNEN.md`.
 
 ## 5. Audio holen
-Über die Übergabefunktion aus `projekt.json` (`audio_uebergabe`). Danach `git pull`, die Blöcke liegen im Ordner des Videos.
+In der Composio-Umgebung `tools/bridge.py` aus dem Repo laden (Anleitung im Kopf der Datei) und `audio_to_repo("<owner>/<repo>", "projekte/<kanal>/videos/<id>", {"hook": <Link>, ...})` aufrufen. Die Links stammen aus dem Status-Ergebnis der Stimmen-Aufrufe. Danach `git pull`: Die Blöcke liegen in `projekte/<kanal>/videos/<id>/blocks/<szene>.mp3`. Schlägt das nach zwei Versuchen fehl: Stopp (Abschnitt 8).
 
 ## 6. Szenen und Video
-- Ähnlichstes bestehendes Video des Kanals als Vorlage kopieren und anpassen, statt alles neu zu schreiben.
-- Nach den Schnittskripten des Kanals vorgehen (Blöcke schneiden, Zeitachse, eine Übersicht, Video).
-- Nur die eine Übersicht ansehen. Zahlen im Bild gegen den Sprechtext abgleichen. Bei Fehlern korrigieren und erneut rendern.
-- Nach dem Schneiden die Zeilenlängen in der Zeitachse prüfen (siehe `LERNEN.md`, Pausen-Tag).
+- `python3 tools/finish.py projekte/<kanal> projekte/<kanal>/videos/<id> projekte/<kanal>/videos/<id>/out/<Datei>.mp4`: schneidet die Blöcke in Zeilen, erzeugt `out/uebersicht.png`, rendert das Video mit dem Modul aus `konzept.inhaltsmodul` und prüft die Länge gegen `format.laenge_sekunden`.
+- Zuerst nur mit `--nur-uebersicht` aufrufen und die Übersicht ansehen (Zahlen gegen den Sprechtext abgleichen). Bei Fehlern korrigieren, dann voll rendern.
+- Meldet `split_blocks.py` einen Hinweis oder eine Warnung zu einer Zeilenlänge, die Schnitte prüfen (siehe `LERNEN.md`, Pausen-Tag, und `cuts.json`).
+- Ohne Credits testen: `python3 tools/trockenlauf.py projekte/<kanal> projekte/<kanal>/videos/<id>`.
+- Ein ähnliches bestehendes Video des Kanals als Vorlage für das Skript nehmen, statt alles neu zu schreiben.
 
 ## 7. Abgabe (ohne Einzel-Freigabe)
-1. Video in den Drive-Ordner `erstellt` (ID aus `projekt.json`). Danach die `parents` prüfen.
+1. Video in den Zweig `videos` pushen (`out_videos/<Datei>`, normal pushen, nicht mit Gewalt). Dann in der Composio-Umgebung `video_to_drive("<owner>/<repo>", "out_videos/<Datei>", "<Datei>", "<ablage.drive_ordner_erstellt>", branch="videos")` aufrufen. Das Ergebnis muss `in_ordner: true` melden, sonst Stopp (Abschnitt 8).
 2. Alte Datei gleichen Namens außerhalb von `erstellt` und `gepostet` in den Drive-Papierkorb. Nie endgültig löschen.
 3. `queue.json` auf `fertig` setzen, `git pull --rebase`, committen, pushen.
-4. Themen-Tabelle synchronisieren.
+4. (Optional, noch nicht im Blueprint) Themen-Tabelle aktualisieren.
 5. Kurze Nachricht an den Nutzer: "<Kanal> <id> <Titel> fertig (Dauer, Credits)".
 
 ## 8. Bei einem Problem
@@ -69,5 +72,5 @@ Zwei Tage vor Ende der Liste schlägt eine geplante Aufgabe so viele neue Themen
 ## 10. Ordnung der Sitzungen
 - Jedes Video läuft in einer eigenen Sitzung.
 - Die Sitzungen starten zeitlich versetzt (`zeitplan.sitzungen`), damit sich die Vertonungen nicht überlappen. Ist die vorige Sitzung noch beim Vertonen, wartet die nächste, höchstens 30 Minuten.
-- Posten und TikTok-Upload laufen nach den Einstellungen in `projekt.json` unter `posten`. Der Nutzer postet manuell aus der App.
+- **Noch nicht Teil der Automatik:** Upload in den TikTok-Posteingang und die Erinnerung (Entwurf in `ANLEITUNG_FREUNDE.md`). Bis dahin liegt das fertige Video im Drive-Ordner `erstellt`, der Nutzer lädt und postet selbst. Wenn der Upload später dazukommt, gelten die Einstellungen in `projekt.json` unter `posten`.
 - Vor jedem Upload die Limits aus `projekt.json` unter `limits` beachten (`tiktok_uploads_pro_24h`, `tiktok_upload_abstand_minuten`). Bei Fehler 403 wegen zu vieler wartender Uploads nicht wiederholen, den Nutzer benachrichtigen (siehe `LERNEN.md`, Abschnitt TikTok-Upload).

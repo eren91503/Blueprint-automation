@@ -6,7 +6,10 @@
     "kurzbeschreibung": ""
   },
   "format": {
-    "laenge_sekunden": { "min": 60, "max": 80 },
+    "laenge_sekunden": {
+      "min": 60,
+      "max": 80
+    },
     "videos_pro_tag": 2,
     "aufloesung": "1080x1920",
     "fps": 30
@@ -17,8 +20,17 @@
     "inhaltsmodul": ""
   },
   "skript": {
-    "bloecke": ["hook", "setup", "haupt", "ergebnis", "schluss"],
-    "woerter": { "min": 160, "max": 175 },
+    "bloecke": [
+      "hook",
+      "setup",
+      "haupt",
+      "ergebnis",
+      "schluss"
+    ],
+    "woerter": {
+      "min": 160,
+      "max": 175
+    },
     "zeilen_pro_block": {},
     "zahlen_ausschreiben": true
   },
@@ -33,8 +45,13 @@
   },
   "look": {
     "farben": {},
-    "schrift": "",
-    "untertitel": "",
+    "schrift": null,
+    "karte_groesse": 78,
+    "pause": 0.15,
+    "untertitel": {
+      "position": "unten",
+      "groesse": 54
+    },
     "intro_outro": ""
   },
   "themenliste": {
@@ -44,16 +61,14 @@
   },
   "zeitplan": {
     "datei": "schedule.json",
-    "slots": {
-      "Mo-Do": ["11:55", "18:00"],
-      "Fr": ["15:30", "18:00"],
-      "Sa": ["11:00", "17:00"],
-      "So": ["10:00", "18:00"]
-    },
+    "slots": {},
     "fertig_bis": "vorabend",
     "vorlauf_tage": 1,
-    "bau": { "start": "19:00", "abstand_minuten": 60 },
-    "sitzungen": { "A": "19:00", "B": "20:00" },
+    "bau": {
+      "start": "19:00",
+      "abstand_minuten": 60
+    },
+    "sitzungen": {},
     "erinnerung_vorlauf_minuten": 20,
     "pausentage": [],
     "zeitzone": "Europe/Berlin"
@@ -68,7 +83,10 @@
     "upload_ziel": "tiktok_posteingang",
     "veroeffentlichen": false,
     "caption_regeln": "caption_regeln.md",
-    "upload_vorlauf_minuten": { "min": 65, "max": 100 }
+    "upload_vorlauf_minuten": {
+      "min": 65,
+      "max": 100
+    }
   },
   "limits": {
     "credits_pro_video": null,

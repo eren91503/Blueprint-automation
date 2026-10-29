@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+projekte/*/videos/*/out/
+projekte/*/videos/*/vo/
+projekte/*/videos/*/blocks/
+out_videos/
+*.mp4

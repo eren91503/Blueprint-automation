@@ -1,0 +1,5 @@
+[
+  {"id": "B001", "slug": "blauer-himmel", "title": "Warum ist der Himmel blau?", "modus": "neu_bauen", "szene": "", "ordner": "videos/B001", "datei": "B001_blauer-himmel.mp4", "status": "offen", "hinweis": "", "slot": "2026-10-30_1200"},
+  {"id": "B002", "slug": "beispiel-2", "title": "Beispielthema 2", "modus": "neu_bauen", "szene": "", "ordner": "videos/B002", "datei": "B002_beispiel-2.mp4", "status": "offen", "hinweis": "", "slot": "2026-10-30_1800"},
+  {"id": "B003", "slug": "beispiel-3", "title": "Beispielthema 3", "modus": "neu_bauen", "szene": "", "ordner": "videos/B003", "datei": "B003_beispiel-3.mp4", "status": "offen", "hinweis": "", "slot": "2026-11-02_1200"}
+]

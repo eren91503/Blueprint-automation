@@ -1,0 +1,120 @@
+{
+  "kanal": {
+    "name": "Beispielkanal",
+    "plattform": "TikTok",
+    "sprache": "de",
+    "kurzbeschreibung": "Erklärvideos zu Alltagsphänomenen (nur Beispiel)"
+  },
+  "format": {
+    "laenge_sekunden": {
+      "min": 20,
+      "max": 80
+    },
+    "videos_pro_tag": 2,
+    "aufloesung": "1080x1920",
+    "fps": 30
+  },
+  "konzept": {
+    "art": "erklaervideo",
+    "inhaltsquelle": "recherche_mit_quellen",
+    "inhaltsmodul": "erklaervideo_text_bild"
+  },
+  "skript": {
+    "bloecke": [
+      "hook",
+      "setup",
+      "haupt",
+      "ergebnis",
+      "schluss"
+    ],
+    "woerter": {
+      "min": 160,
+      "max": 175
+    },
+    "zeilen_pro_block": {},
+    "zahlen_ausschreiben": true
+  },
+  "stimme": {
+    "anbieter": "elevenlabs",
+    "voice_id": "",
+    "modell": "eleven_v4",
+    "sprache": "de",
+    "generations_count": 1,
+    "pause_tag": "<break time=\"1.0s\" />",
+    "ton": ""
+  },
+  "look": {
+    "farben": {
+      "hintergrund": "#F4EFE6",
+      "panel": "#FFFFFF",
+      "text": "#1D1D1F",
+      "akzent": "#2F6FED",
+      "untertitel_bg": "#1D1D1F",
+      "untertitel_text": "#FFFFFF"
+    },
+    "schrift": null,
+    "karte_groesse": 78,
+    "pause": 0.15,
+    "untertitel": {
+      "position": "unten",
+      "groesse": 54
+    },
+    "intro_outro": ""
+  },
+  "themenliste": {
+    "datei": "queue.json",
+    "nachschub": 17,
+    "nachschub_vorlauf_tage": 2
+  },
+  "zeitplan": {
+    "datei": "schedule.json",
+    "slots": {
+      "Mo-Fr": [
+        "12:00",
+        "18:00"
+      ]
+    },
+    "fertig_bis": "vorabend",
+    "vorlauf_tage": 1,
+    "bau": {
+      "start": "19:00",
+      "abstand_minuten": 60
+    },
+    "sitzungen": {
+      "A": "19:00",
+      "B": "20:00"
+    },
+    "erinnerung_vorlauf_minuten": 20,
+    "pausentage": [],
+    "zeitzone": "Europe/Berlin"
+  },
+  "ablage": {
+    "drive_ordner_erstellt": "",
+    "drive_ordner_gepostet": "",
+    "audio_uebergabe": ""
+  },
+  "posten": {
+    "modus": "posteingang_manuell",
+    "upload_ziel": "tiktok_posteingang",
+    "veroeffentlichen": false,
+    "caption_regeln": "caption_regeln.md",
+    "upload_vorlauf_minuten": {
+      "min": 65,
+      "max": 100
+    }
+  },
+  "limits": {
+    "credits_pro_video": null,
+    "credits_pro_tag": null,
+    "credits_pro_monat": null,
+    "max_videos_pro_tag": 5,
+    "tiktok_uploads_pro_24h": 5,
+    "tiktok_upload_abstand_minuten": 5,
+    "websuchen": 2,
+    "wiederholungen_stimme": 3,
+    "wiederholungen_render_upload": 2
+  },
+  "benachrichtigung": {
+    "kanal": "claude_nachricht"
+  }
+}

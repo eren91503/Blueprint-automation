@@ -40,12 +40,12 @@ Kosten: Hauptsächlich der ElevenLabs-Plan. Frage in der Einrichtung, was ein Vi
 **Composio**
 1. Konto anlegen und den Composio-Connector in Claude verbinden.
 2. In Composio drei Apps koppeln: **GitHub**, **Google Drive** und **TikTok** (dein eigenes Konto jeweils). Über die TikTok-Verbindung wird das Video in den Posteingang geladen.
-3. Die Hilfsdatei `bridge.py` in deinen Drive-Ordner legen. Sie enthält deinen Repo-Namen und die ID des Ordners `erstellt`. **Noch zu bauen:** Bei Faktum liegt eine solche Datei fest verdrahtet im Drive. Im Blueprint muss sie erst verallgemeinert und getestet werden, bevor Freunde sie nutzen können.
+3. Die Hilfsdatei `tools/bridge.py` liegt in deinem Repo, und Claude lädt sie von dort in die Composio-Umgebung. Du legst nichts selbst ab. Repo-Name und Drive-Ordner übergibt Claude bei jedem Aufruf aus `projekt.json`. Die Datei ist mit künstlichen Aufrufen geprüft (`tools/test_bridge_mock.py`), aber noch nicht live in Composio. Dieser Test steht aus.
 
 **TikTok-Posteingang**
 Bei Faktum übernimmt das Skript `run_faktum.py` (im Drive, läuft in der Composio-Umgebung) diesen Teil: Es legt das Video einige Zeit vor dem Slot als Entwurf in den TikTok-Posteingang (ohne zu veröffentlichen) und schickt dir kurz vor dem Slot eine Erinnerung mit Caption und Hashtags. Du fügst die Caption ein und postest. Außerdem pflegt es eine Themen-Tabelle mit Status und Kennzahlen. Dafür laufen zwei geplante Aufgaben: Upload und Erinnerung.
 
-**Noch offen im Blueprint:** `run_faktum.py` hat bei Faktum Repo-Name, Ordner-IDs und Dateipfade fest eingetragen. Für das Blueprint muss es verallgemeinert und mit einem Testkonto geprüft werden, bevor Freunde es nutzen können. Dasselbe gilt für `bridge.py`. Die Faktum-Fassung wiederholt fehlgeschlagene TikTok-Uploads bis zu viermal im Abstand von 20 bis 30 Sekunden. Die verallgemeinerte Fassung muss die Limits aus `projekt.json` beachten und bei Fehler 403 (zu viele wartende Uploads) nicht wiederholen.
+**Noch offen im Blueprint (bewusst):** Upload in den Posteingang, Erinnerung und Themen-Tabelle sind vorerst nicht Teil der Automatik. Bis dahin liegt das fertige Video im Drive-Ordner `erstellt`, und du lädst und postest selbst. `run_faktum.py` hat bei Faktum Repo-Name, Ordner-IDs und Dateipfade fest eingetragen und muss für das Blueprint erst verallgemeinert und mit einem Testkonto geprüft werden. Die Faktum-Fassung wiederholt fehlgeschlagene TikTok-Uploads bis zu viermal im Abstand von 20 bis 30 Sekunden. Die verallgemeinerte Fassung muss die Limits aus `projekt.json` beachten und bei Fehler 403 (zu viele wartende Uploads) nicht wiederholen.
 
 ## Schritt für Schritt
 

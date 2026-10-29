@@ -22,8 +22,10 @@ Abgeleitet aus dem Workflow des Kanals Faktum. Faktum selbst bleibt unverändert
 | `ANLEITUNG_FREUNDE.md` | Schritt für Schritt für Leute mit eigenen Konten |
 | `vorlage/` | Leere Vorlagen: `projekt.json`, `queue.json`, `schedule.json`, Caption-Regeln, Projektanweisungen (erst die Einrichtungs-Fassung, nach der Freigabe die Betriebs-Fassung) |
 | `projekte/<kanal>/` | Pro Kanal: Konfiguration, Themenliste, Zeitplan (entsteht bei der Einrichtung) |
+| `tools/` | Werkzeuge: `bloecke.py` (Sprechblöcke), `split_blocks.py` (Blöcke in Zeilen schneiden), `finish.py` (schneiden und rendern), `bridge.py` (Composio: Audio ins Repo, Video nach Drive), `trockenlauf.py` und `test_bridge_mock.py` (Tests ohne Kosten) |
+| `setup.sh` | Prüft/installiert Programme und führt den Trockenlauf aus |
 | `module/` | Austauschbare Inhaltsstufen pro Videoformat. Vorhanden: `erklaervideo_text_bild` |
 
 ## Stand
 
-Konzept, Anleitungen und ein erstes Inhaltsmodul (`erklaervideo_text_bild`) stehen. Das Modul ist mit Platzhalter-Ton geprüft, noch nicht mit einer echten Stimme. Noch offen: Zerschneiden der Stimmen-Blöcke in Zeilen, die Hilfsdateien für Composio (Audio, Video, TikTok-Upload), `setup.sh` und ein kompletter Durchlauf mit einem Testkanal. Was sich im Test als falsch herausstellt, wird in `LERNEN.md` und den Anleitungen korrigiert.
+Konzept, Anleitungen, Inhaltsmodul `erklaervideo_text_bild`, Zeilenschnitt, Render-Kette und Dateibrücke stehen. Geprüft ohne Kosten: Trockenlauf mit künstlichen Tönen (`setup.sh`) und Mock-Test der Brücke. **Noch nicht live geprüft:** echte ElevenLabs-Stimme, Composio-Aufrufe, Durchlauf mit einem Testkanal. **Bewusst offen:** Upload in den TikTok-Posteingang und Erinnerung (das Video liegt im Drive-Ordner `erstellt`, gepostet wird von Hand). Was sich im Test als falsch herausstellt, wird in `LERNEN.md` und den Anleitungen korrigiert.
