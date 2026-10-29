@@ -50,7 +50,12 @@
       "Sa": ["11:00", "17:00"],
       "So": ["10:00", "18:00"]
     },
+    "fertig_bis": "vorabend",
+    "vorlauf_tage": 1,
+    "bau": { "start": "19:00", "abstand_minuten": 60 },
     "sitzungen": { "A": "19:00", "B": "20:00" },
+    "erinnerung_vorlauf_minuten": 20,
+    "pausentage": [],
     "zeitzone": "Europe/Berlin"
   },
   "ablage": {

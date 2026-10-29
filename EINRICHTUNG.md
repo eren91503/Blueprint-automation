@@ -32,10 +32,10 @@ Farben, Schrift, Layout, Untertitel, Intro und Outro. Möglichst mit einem Beisp
 Ein Video aus einem der Beispielskripte bauen. Dabei Prüfung vor der Vertonung und Prüfbild nach dem Rendern wie in `GO.md`. Dem Nutzer zeigen. Korrekturen einarbeiten, bis er "Freigabe" schreibt.
 
 **8. Themenliste und Zeitplan**
-Ersten Satz Themen vorschlagen (Anzahl nach `themenliste.nachschub`, mindestens 30 für den Start) und freigeben lassen. Wochentage und Uhrzeiten der Slots festlegen. Die Sitzungen für den Vortag mit mindestens 60 Minuten Abstand planen.
+Ersten Satz Themen vorschlagen (Anzahl nach `themenliste.nachschub`, mindestens 30 für den Start) und freigeben lassen. Dann den Zeitplan nach **`ZEITPLAN.md`** abfragen: Posting-Zeiten, bis wann die Videos fertig sein sollen, Bauzeit, Upload und Erinnerung, Pausen, Zeitzone. Daraus den Plan ableiten und als Tabelle zeigen. Der Nutzer entscheidet selbst, nichts davon wird vorgegeben.
 
 **9. Anlegen**
-Erst jetzt: `projekte/<kanal>/` aus `vorlage/` erzeugen und ausfüllen, Drive-Ordner `erstellt` und `gepostet` prüfen oder anlegen, geplante Aufgaben anlegen (Sitzung A, B, Themen-Nachschub), Projektanweisungen aus `vorlage/projektanweisungen.md` für das Claude-Projekt des Kanals ausgeben.
+Erst jetzt: `projekte/<kanal>/` aus `vorlage/` erzeugen und ausfüllen, Drive-Ordner `erstellt` und `gepostet` prüfen oder anlegen, geplante Aufgaben nach `ZEITPLAN.md` anlegen (Bau-Sitzungen, Upload, Erinnerung, Themen-Nachschub), erst nach dem OK des Nutzers zur Planungstabelle, Projektanweisungen aus `vorlage/projektanweisungen.md` für das Claude-Projekt des Kanals ausgeben.
 
 **10. Ersten Lauf beobachten**
 Am nächsten Abend prüfen, ob das Video in `erstellt` liegt. Fehler und Lösungen in `LERNEN.md` eintragen.

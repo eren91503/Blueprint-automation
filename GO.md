@@ -17,7 +17,7 @@ Ziel: ein fertiges Video mit möglichst wenig Tokens und Credits. Knapp berichte
 3. Kanal bestimmen: Der Name des Kanals steht in den Projektanweisungen der Sitzung. Dann `projekte/<kanal>/projekt.json` lesen. Fehlt die Datei: Stopp, Nutzer benachrichtigen.
 
 ## 1. Slot und Thema bestimmen
-1. `schedule.json` des Kanals lesen (Ort steht in `projekt.json` unter `zeitplan`). Die Slots von **morgen** nach Uhrzeit sortieren. Sitzung A nimmt den ersten, Sitzung B den zweiten, und so weiter. Ohne Slot morgen: nichts tun.
+1. `schedule.json` des Kanals lesen (Ort steht in `projekt.json` unter `zeitplan`). Die Slots des Tages "heute plus `zeitplan.vorlauf_tage`" (Standard: morgen) nach Uhrzeit sortieren. Pausentage aus `zeitplan.pausentage` überspringen. Sitzung A nimmt den ersten, Sitzung B den zweiten, und so weiter. Ohne Slot morgen: nichts tun.
 2. Eintrag in `queue.json` suchen (Feld `datei` entspricht dem Slot).
    - Status `fertig`, oder liegt die Datei schon in `erstellt`: nichts tun, melden "schon fertig".
    - Es gibt einen Eintrag mit Status `wartet_freigabe`: nichts Neues bauen, den Nutzer erinnern, stoppen.

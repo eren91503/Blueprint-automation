@@ -17,6 +17,7 @@ Abgeleitet aus dem Workflow des Kanals Faktum. Faktum selbst bleibt unverändert
 | `BLUEPRINT.md` | Konzept: was konstant ist, was variabel |
 | `EINRICHTUNG.md` | Fragenablauf für die Einrichtung mit Claude |
 | `GO.md` | Betriebsanleitung für die Automatik (gilt für alle Kanäle) |
+| `ZEITPLAN.md` | Abfrage der Zeiten (posten, fertig bis, Bauzeit) und Ableitung der geplanten Aufgaben |
 | `LERNEN.md` | Bekannte Fehler und Lösungen, wächst mit jedem Lauf |
 | `ANLEITUNG_FREUNDE.md` | Schritt für Schritt für Leute mit eigenen Konten |
 | `vorlage/` | Leere Vorlagen: `projekt.json`, `queue.json`, `schedule.json`, Caption-Regeln, Projektanweisungen |

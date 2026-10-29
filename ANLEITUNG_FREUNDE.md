@@ -71,7 +71,7 @@ Claude fragt dich eins nach dem anderen: Idee, Plattform, Länge, Stil, Stimme, 
 Claude baut ein Testvideo. Schau es dir an und sag, was geändert werden soll. Wenn es passt, schreibe **"Freigabe"**. Vorher wird nichts automatisch angelegt.
 
 **8. Themenliste und Zeitplan**
-Claude schlägt Themen vor (du bestätigst) und fragt, an welchen Tagen und Uhrzeiten du posten willst.
+Claude schlägt Themen vor (du bestätigst). Dann fragt er dich, **wann du posten willst**, **bis wann die Videos fertig sein sollen** (z. B. am Vorabend), wann er bauen darf, wie früh vor dem Slot das Video im TikTok-Posteingang liegen soll und wann du erinnert werden willst. Daraus macht er einen Plan als Tabelle. Du sagst Ja oder änderst etwas. Erst dann legt er die geplanten Aufgaben an. Alles Weitere steht in `ZEITPLAN.md`.
 
 **9. Automatik anlegen**
 Nach deiner Freigabe legt Claude die Dateien für deinen Kanal an, richtet die geplanten Aufgaben ein und gibt dir die fertigen Projektanweisungen.
