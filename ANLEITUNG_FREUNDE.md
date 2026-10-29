@@ -8,13 +8,41 @@ Du brauchst keine Programmierkenntnisse. Du bekommst deine eigene Kopie der Vorl
 Jeden Abend baut Claude automatisch die Videos für den nächsten Tag und legt sie in deinen Google-Drive-Ordner. Du lädst sie nur noch bei TikTok hoch und postest.
 
 ## Was du vorher brauchst
-- Einen Claude-Zugang mit Projekten und geplanten Aufgaben
-- Ein GitHub-Konto (kostenlos)
-- Ein ElevenLabs-Konto mit **Bezahlplan** (die Automatik braucht viele Sprachminuten, mit dem Gratisplan stößt du schnell an Grenzen)
-- Ein Google-Konto mit Google Drive
-- Ein TikTok-Konto, auf dem du selbst postest
+
+| Was | Wofür | Hinweis |
+|---|---|---|
+| Claude mit Projekten und geplanten Aufgaben | Dialog, Bauen der Videos, Zeitplan | Prüfe in deinem Plan, ob geplante Aufgaben dabei sind |
+| GitHub-Konto | Speichert Vorlage, Themenliste, Zeitplan, Fehlerwissen und das Audio auf dem Weg zur Sitzung | Kostenlos, privates Repo |
+| ElevenLabs-Konto | Die Stimme | Bezahlplan. Mit dem Gratisplan stößt du schnell an Grenzen. Bei Faktum verschwanden die Tempo-Fehler (429) nach dem Wechsel auf den Starter-Plan (Beobachtung) |
+| Google-Konto mit Drive | Ablage der fertigen Videos (`erstellt`, `gepostet`) | Ordner in "Meine Ablage", nicht in einem mit dem Computer synchronisierten Ordner |
+| Composio-Konto | Dateibrücke: holt das Audio von ElevenLabs ins Repo und lädt das fertige Video nach Drive | Die Sitzung selbst erreicht die ElevenLabs-Links nicht (403). Preis und Plan bei Composio selbst prüfen |
+| TikTok-Konto | Du postest selbst aus der App | Kein Zugang für die Automatik nötig |
 
 Kosten: Hauptsächlich der ElevenLabs-Plan. Frage in der Einrichtung, was ein Video ungefähr kostet, bevor du es freigibst.
+
+## Was du in jedem Tool einrichtest
+
+**GitHub**
+1. Konto anlegen.
+2. Vorlage `Blueprint-automation` als **privates** Repo kopieren (Schritt 3).
+3. In Claude den GitHub-Connector verbinden, so dass Claude dein Repo mit Schreibzugriff (push) einbinden kann. Meldet Claude "kein GitHub-Zugriff", dort in den Connector-Einstellungen neu verbinden.
+
+**ElevenLabs**
+1. Konto anlegen, Bezahlplan wählen.
+2. In Claude den ElevenLabs-Connector verbinden. Er muss Sprache erzeugen können.
+3. Die Stimme wählst du nicht vorher, sondern im Einrichtungsdialog (Hörproben).
+
+**Google Drive**
+1. Online-Ordner anlegen: `<Kanal>/erstellt` und `<Kanal>/gepostet`.
+2. In Claude den Drive-Connector verbinden.
+3. Die Ordner-IDs trägt Claude beim Einrichten in `projekt.json` ein. Nie Ordner unter "Mein Mac" oder "Computer" verwenden.
+
+**Composio**
+1. Konto anlegen und den Composio-Connector in Claude verbinden.
+2. In Composio zwei Apps koppeln: **GitHub** und **Google Drive** (dein eigenes Konto jeweils).
+3. Die Hilfsdatei `bridge.py` in deinen Drive-Ordner legen. Sie enthält deinen Repo-Namen und die ID des Ordners `erstellt`. **Noch zu bauen:** Bei Faktum liegt eine solche Datei fest verdrahtet im Drive. Im Blueprint muss sie erst verallgemeinert und getestet werden, bevor Freunde sie nutzen können.
+
+**Noch offen im Blueprint:** Upload ins TikTok-Postfach und die Erinnerung mit Caption laufen bei Faktum über eigene geplante Aufgaben und ein Skript im Drive. Diese Teile sind noch nicht ins Blueprint übernommen.
 
 ## Schritt für Schritt
 
@@ -22,7 +50,7 @@ Kosten: Hauptsächlich der ElevenLabs-Plan. Frage in der Einrichtung, was ein Vi
 GitHub, ElevenLabs und Google Drive anlegen, falls du sie noch nicht hast.
 
 **2. Claude mit den Konten verbinden**
-In Claude unter Einstellungen die Verbindungen (Connectors) zu GitHub, ElevenLabs und Google Drive einschalten und jeweils anmelden. Wenn sich die Menüs anders nennen, frage Claude: "Wo verbinde ich GitHub?"
+In Claude unter Einstellungen die Verbindungen (Connectors) zu GitHub, ElevenLabs, Google Drive und Composio einschalten und jeweils anmelden. In Composio zusätzlich GitHub und Google Drive koppeln (Details im Abschnitt "Was du in jedem Tool einrichtest"). Wenn sich die Menüs anders nennen, frage Claude: "Wo verbinde ich GitHub?"
 
 **3. Vorlage kopieren**
 Auf der Seite des Repos `Blueprint-automation` auf **"Use this template"** klicken (wenn dort kein Knopf ist, bittet dich der Besitzer, ihn einzuschalten) und ein **privates** Repo mit deinem Namen anlegen, z. B. `mein-kanal-automation`.
