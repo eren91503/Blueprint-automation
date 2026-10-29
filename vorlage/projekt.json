@@ -1,0 +1,76 @@
+{
+  "kanal": {
+    "name": "",
+    "plattform": "TikTok",
+    "sprache": "de",
+    "kurzbeschreibung": ""
+  },
+  "format": {
+    "laenge_sekunden": { "min": 60, "max": 80 },
+    "videos_pro_tag": 2,
+    "aufloesung": "1080x1920",
+    "fps": 30
+  },
+  "konzept": {
+    "art": "",
+    "inhaltsquelle": "",
+    "inhaltsmodul": ""
+  },
+  "skript": {
+    "bloecke": ["hook", "setup", "haupt", "ergebnis", "schluss"],
+    "woerter": { "min": 160, "max": 175 },
+    "zeilen_pro_block": {},
+    "zahlen_ausschreiben": true
+  },
+  "stimme": {
+    "anbieter": "elevenlabs",
+    "voice_id": "",
+    "modell": "eleven_v4",
+    "sprache": "de",
+    "generations_count": 1,
+    "pause_tag": "<break time=\"1.0s\" />",
+    "ton": ""
+  },
+  "look": {
+    "farben": {},
+    "schrift": "",
+    "untertitel": "",
+    "intro_outro": ""
+  },
+  "themenliste": {
+    "datei": "queue.json",
+    "nachschub": 17,
+    "nachschub_vorlauf_tage": 2
+  },
+  "zeitplan": {
+    "datei": "schedule.json",
+    "slots": {
+      "Mo-Do": ["11:55", "18:00"],
+      "Fr": ["15:30", "18:00"],
+      "Sa": ["11:00", "17:00"],
+      "So": ["10:00", "18:00"]
+    },
+    "sitzungen": { "A": "19:00", "B": "20:00" },
+    "zeitzone": "Europe/Berlin"
+  },
+  "ablage": {
+    "drive_ordner_erstellt": "",
+    "drive_ordner_gepostet": "",
+    "audio_uebergabe": ""
+  },
+  "posten": {
+    "modus": "manuell",
+    "caption_regeln": "caption_regeln.md",
+    "upload_vorlauf_minuten": { "min": 65, "max": 100 }
+  },
+  "limits": {
+    "credits_pro_video": null,
+    "credits_pro_tag": null,
+    "websuchen": 2,
+    "wiederholungen_stimme": 3,
+    "wiederholungen_render_upload": 2
+  },
+  "benachrichtigung": {
+    "kanal": "claude_nachricht"
+  }
+}
