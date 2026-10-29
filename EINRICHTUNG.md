@@ -16,6 +16,12 @@ Worum geht es im Kanal, wer soll zuschauen, was soll hängen bleiben? Plattform 
 **2. Name des Kanals**
 Gibt es schon einen Namen (z. B. den TikTok-Namen)? Dann übernimmt Claude ihn unverändert. Wenn nicht, schlägt Claude auf Basis der Idee 6 bis 8 Namen vor (kurz, merkbar, gut aussprechbar, zur Zielgruppe passend, jeweils mit einem Halbsatz Begründung). Die Person wählt oder ändert. Claude weist darauf hin, dass er nicht prüfen kann, ob der Name auf der Plattform frei ist: Die Person schaut selbst in der App nach und meldet sich, falls er vergeben ist. **Der Name wird erst übernommen, wenn die Person ihn ausdrücklich bestätigt.** Festhalten: Kanalname (für `kanal.name`) und ein Kurzname in Kleinbuchstaben ohne Leerzeichen für den Ordner `projekte/<kanalkurz>/`.
 
+**Direkt nach der Namensbestätigung: Zugriffe prüfen und Drive-Ordner anlegen (automatisch, ohne Rückfrage).** Das ist die einzige Ausnahme von "nichts anlegen vor der Freigabe", weil die Person die Verbindungen schon selbst freigegeben hat und ein leerer Ordner nichts verändert.
+1. Claude prüft, ob GitHub, Google Drive und ElevenLabs erreichbar sind und ob in Composio GitHub und Google Drive gekoppelt sind. Fehlt etwas, sagt er genau, was die Person verbinden muss (siehe `ANLEITUNG_FREUNDE.md`), und wartet darauf.
+2. Claude lädt `tools/bridge.py` in die Composio-Umgebung und ruft `drive_ordner("<Kanalname>")` auf. Das legt in "Meine Ablage" den Ordner `<Kanalname>` mit den Unterordnern `erstellt` und `gepostet` an. Gibt es sie schon, werden sie wiederverwendet, nichts wird doppelt angelegt.
+3. Die zurückgegebenen Ordner-IDs merkt sich Claude für `projekt.json` (`ablage.drive_ordner_erstellt`, `ablage.drive_ordner_gepostet`) und schreibt sie beim Anlegen (Schritt 11) ein.
+4. Claude sagt der Person in einem Satz, dass der Ordner da ist. Ändert die Person später den Namen, legt Claude keinen zweiten Ordner an, sondern fragt, ob der bestehende umbenannt werden soll.
+
 **3. Format**
 Länge pro Video, Videos pro Tag, Seitenverhältnis (Standard 9:16, 1080x1920, 30 fps), Sprache.
 
@@ -54,7 +60,7 @@ Claude fasst alles auf einer Seite zusammen, damit die Person das ganze Projekt 
 Dann fragt Claude genau einmal: "Soll ich das Projekt so anlegen? Schreibe **Freigabe**, oder sag, was geändert werden soll." Änderungen werden eingearbeitet und die Übersicht erneut gezeigt. **Mit der Freigabe ist der restliche Ablauf (Schritte 11 und 12) ohne weitere Rückfragen freigegeben.** Claude fragt dann nur noch, wenn etwas fehlt oder nicht geht.
 
 **11. Anlegen**
-Erst jetzt: `projekte/<kanal>/` aus `vorlage/` erzeugen und ausfüllen, Drive-Ordner `erstellt` und `gepostet` prüfen oder anlegen, geplante Aufgaben nach `ZEITPLAN.md` anlegen (Bau-Sitzungen, Upload, Erinnerung, Themen-Nachschub), gemäß der freigegebenen Planungstabelle, Projektanweisungen aus `vorlage/projektanweisungen.md` für das Claude-Projekt des Kanals ausfüllen und ausgeben. Sie ersetzen die Einrichtungs-Fassung (`vorlage/projektanweisungen_einrichtung.md`).
+Erst jetzt: `projekte/<kanal>/` aus `vorlage/` erzeugen und ausfüllen, die Drive-Ordner `erstellt` und `gepostet` aus Schritt 2 prüfen (liegen die IDs in `projekt.json` und existieren die Ordner noch?), geplante Aufgaben nach `ZEITPLAN.md` anlegen (Bau-Sitzungen, Upload, Erinnerung, Themen-Nachschub), gemäß der freigegebenen Planungstabelle, Projektanweisungen aus `vorlage/projektanweisungen.md` für das Claude-Projekt des Kanals ausfüllen und ausgeben. Sie ersetzen die Einrichtungs-Fassung (`vorlage/projektanweisungen_einrichtung.md`).
 
 **12. Ersten Lauf beobachten**
 Am nächsten Abend prüfen, ob das Video in `erstellt` liegt. Fehler und Lösungen in `LERNEN.md` eintragen.

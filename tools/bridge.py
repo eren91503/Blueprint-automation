@@ -15,6 +15,9 @@ Funktionen:
     video_to_drive(repo, repo_pfad, name, folder_id, branch="main")
         holt die Datei aus dem Repo (Zweig `branch`), lädt sie in den Drive-Ordner `folder_id`, prüft danach,
         dass sie wirklich in diesem Ordner liegt.
+    drive_ordner(kanalname)
+        legt in Drive den Ordner <kanalname> mit den Unterordnern `erstellt` und `gepostet` an (oder findet sie, wenn
+        es sie schon gibt) und gibt die IDs zurück: {"kanal": id, "erstellt": id, "gepostet": id}.
     in_ordner(name, folder_id)
         listet Dateien dieses Namens im Drive-Ordner (id, name, parents).
 
@@ -125,3 +128,39 @@ def video_to_drive(repo, repo_pfad, name, folder_id, branch="main"):
     drive_id = _mit_versuchen(f"Upload von {name}", hochladen)
     liegt = any(f.get("id") == drive_id for f in in_ordner(name, folder_id))
     return {"bytes": len(daten), "drive_id": drive_id, "in_ordner": liegt}
+
+
+def _finde_ordner(name, parent_id=None):
+    args = {"name_exact": name}
+    if parent_id:
+        args["parent_folder_id"] = parent_id
+    r, e = _ruhig(run_composio_tool, "GOOGLEDRIVE_FIND_FOLDER", args)  # noqa: F821
+    if e:
+        raise RuntimeError(str(e))
+    daten = (r or {}).get("data", {})
+    treffer = daten.get("files") or daten.get("folders") or []
+    return [t["id"] for t in treffer if t.get("id") and not t.get("trashed")]
+
+
+def _ordner(name, parent_id=None):
+    def tun():
+        ids = _finde_ordner(name, parent_id)
+        if ids:
+            return ids[0]
+        args = {"name": name}
+        if parent_id:
+            args["parent_id"] = parent_id
+        r, e = _ruhig(run_composio_tool, "GOOGLEDRIVE_CREATE_FOLDER", args)  # noqa: F821
+        if e:
+            raise RuntimeError(str(e))
+        return r["data"]["id"]
+
+    return _mit_versuchen(f"Drive-Ordner {name}", tun)
+
+
+def drive_ordner(kanalname):
+    """<kanalname>/erstellt und <kanalname>/gepostet anlegen oder wiederfinden (kein Doppelanlegen)."""
+    if not kanalname or not kanalname.strip():
+        raise RuntimeError("Kein Kanalname angegeben")
+    kanal = _ordner(kanalname.strip())
+    return {"kanal": kanal, "erstellt": _ordner("erstellt", kanal), "gepostet": _ordner("gepostet", kanal)}

@@ -33,9 +33,9 @@ Kosten: Hauptsächlich der ElevenLabs-Plan. Frage in der Einrichtung, was ein Vi
 3. Such dir in ElevenLabs unter **Voices** eine Stimme aus (bei Stimmen aus der Library erst "Add to my voices"). Kopiere ihre **Voice-ID** ("Copy Voice ID"). Claude fragt im Einrichtungsdialog danach, prüft die ID, spielt eine kurze Hörprobe, und erst dann geht es weiter.
 
 **Google Drive**
-1. Online-Ordner anlegen: `<Kanal>/erstellt` und `<Kanal>/gepostet`.
+1. Nichts von Hand anlegen: Sobald dein Kanalname feststeht, legt Claude in deinem Drive automatisch den Ordner `<Kanalname>` mit `erstellt` und `gepostet` an.
 2. In Claude den Drive-Connector verbinden.
-3. Die Ordner-IDs trägt Claude beim Einrichten in `projekt.json` ein. Nie Ordner unter "Mein Mac" oder "Computer" verwenden.
+3. Die Ordner-IDs trägt Claude beim Einrichten in `projekt.json` ein. Der Ordner liegt in "Meine Ablage" (online). Nie Ordner unter "Mein Mac" oder "Computer" verwenden.
 
 **Composio**
 1. Konto anlegen und den Composio-Connector in Claude verbinden.
@@ -58,8 +58,8 @@ In Claude unter Einstellungen die Verbindungen (Connectors) zu GitHub, ElevenLab
 **3. Vorlage kopieren**
 Auf der Seite des Repos `Blueprint-automation` auf **"Use this template"** klicken (wenn dort kein Knopf ist, bittet dich der Besitzer, ihn einzuschalten) und ein **privates** Repo mit deinem Namen anlegen, z. B. `mein-kanal-automation`.
 
-**4. Drive-Ordner anlegen**
-In Google Drive einen Ordner für deinen Kanal anlegen, darin zwei Unterordner: `erstellt` und `gepostet`. Nutze den Ordner in "Meine Ablage" (online), nicht einen Ordner, der mit deinem Computer synchronisiert wird.
+**4. Drive-Ordner: entfällt**
+Den Ordner für deinen Kanal legt Claude später selbst an, sobald der Name feststeht und die Verbindungen stehen. Du musst nur sicherstellen, dass Google Drive in Claude und in Composio verbunden ist (Schritt 2).
 
 **5. Claude-Projekt anlegen**
 In Claude ein neues Projekt anlegen, Name = dein Kanal. Als Projektanweisungen den Inhalt von `vorlage/projektanweisungen_einrichtung.md` einfügen. Du ersetzt darin nur `<GitHub-Name>` und `<Repo-Name>` durch deine eigenen Werte. Dann schreibst du: **"Einrichtung starten"**.

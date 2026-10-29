@@ -16,6 +16,7 @@ blobs = {}           # sha -> bytes
 s3 = {}              # s3key -> bytes
 drive = []           # {"id","name","parents","bytes"}
 protokoll = []
+ordner = []
 fehler_put = {"anzahl": 0}
 
 
@@ -77,6 +78,13 @@ def run_composio_tool(name, args):
         par = re.search(r"'([^']+)' in parents", q).group(1)
         return {"data": {"files": [{"id": d["id"], "name": d["name"], "parents": d["parents"]}
                                    for d in drive if d["name"] == nm and par in d["parents"]]}}, None
+    if name == "GOOGLEDRIVE_FIND_FOLDER":
+        return {"data": {"files": [{"id": f["id"], "name": f["name"]} for f in ordner
+                                   if f["name"] == args["name_exact"] and f["parent"] == args.get("parent_folder_id")]}}, None
+    if name == "GOOGLEDRIVE_CREATE_FOLDER":
+        fid = f"ord{len(ordner) + 1}"
+        ordner.append({"id": fid, "name": args["name"], "parent": args.get("parent_id")})
+        return {"data": {"id": fid}}, None
     return None, "unbekanntes Werkzeug"
 
 
@@ -136,6 +144,17 @@ def main():
         pruefe(False, "Fehlende Repo-Datei löst RuntimeError aus")
     except RuntimeError:
         pruefe(True, "Fehlende Repo-Datei löst RuntimeError aus")
+    # 9. Drive-Ordner automatisch anlegen, zweimal aufrufen legt nichts doppelt an
+    o1 = ns["drive_ordner"]("Testkanal")
+    o2 = ns["drive_ordner"]("Testkanal")
+    pruefe(o1 == o2 and len(ordner) == 3, "drive_ordner legt 3 Ordner an und beim zweiten Aufruf nichts doppelt")
+    pruefe(all(f["parent"] == o1["kanal"] for f in ordner if f["name"] in ("erstellt", "gepostet")),
+           "erstellt und gepostet liegen im Kanalordner")
+    try:
+        ns["drive_ordner"]("  ")
+        pruefe(False, "Leerer Kanalname wird abgelehnt")
+    except RuntimeError:
+        pruefe(True, "Leerer Kanalname wird abgelehnt")
     # 8. Keine festen Werte im Code
     pruefe(not re.search(r"eren91503|faktum", quelle, re.I), "bridge.py enthält keine festen Faktum-Werte")
     print("MOCK-TEST", "FEHLGESCHLAGEN" if pruefe.fehler else "OK", f"({pruefe.fehler} Fehler)")
